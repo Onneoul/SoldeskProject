@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+#site_head {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	background-color: #555555;
+}
+
+#site_head_area {
+	width: 1000px;
+}
+
+#site_head_list {
+	width: 1000px;
+}
+
+#site_title td{
+	padding-left: 40px;
+	font-size: 30px;
+	font-weight: 800;
+	background-color: #777777;
+	padding-top: 30px;
+}
+
+#site_login {
+	float: right;	
+	background-color: yellow;
+}
+
+#site_login_bar {
+	padding-bottom: 2px;
+}
+
+#site_head_menu li{
+	float: left;
+	list-style: none;
+	padding-right: 50px;
+	background-color: #999999;
+	font-size: 20px;
+	font-weight: 700;
+	width: 100px;
+}
+
+
+#site_content {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1000px;
+	background-color: green;
+	margin-top: 30px;
+}
