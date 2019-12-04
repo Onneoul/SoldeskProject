@@ -1,14 +1,18 @@
 @charset "UTF-8";
 
+body {
+	margin: 0;
+}
+
 #site_head {
-	margin-left: auto;
-	margin-right: auto;
 	width: 100%;
 	background-color: #555555;
 }
 
 #site_head_area {
 	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #site_head_list {

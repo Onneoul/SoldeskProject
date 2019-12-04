@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="MemberMapper"></mapper>
+<mapper namespace="com.soldesk.spring.member.MemberMapper">
+	<insert id="join" parameterType="com.soldesk.spring.member.Member">
+		insert into Member values (Member_seq.nextval, #{member_id}, #{member_pw}, #{member_name}, #{member_addr}, #{member_photo}, 1)
+	</insert>
+	
+	<select id="getMemberByID" 
+		resultType="com.soldesk.spring.member.Member"
+		parameterType="com.soldesk.spring.member.Member">
+		select * from Member
+		where member_id = #{member_id}
+	</select>
+	
+</mapper>

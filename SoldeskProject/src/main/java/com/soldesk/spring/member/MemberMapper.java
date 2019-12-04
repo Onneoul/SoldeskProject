@@ -1,5 +1,6 @@
 package com.soldesk.spring.member;
 
-public class MemberMapper {
-
+public interface MemberMapper {
+	public abstract int join(Member m);
+	public abstract Member getMemberByID(Member m);
 }
