@@ -89,7 +89,7 @@ public class MemberController {
 		return "index";
 	}
 	
-	// 회원탈퇴
+	// 회원탈퇴12
 	@RequestMapping(value = "member.delete.go", method = RequestMethod.GET)
 	public String memberDelete(HttpServletRequest req, HttpServletResponse res) {
 		if (mDAO.memberLoginCheck(req, res)) {
