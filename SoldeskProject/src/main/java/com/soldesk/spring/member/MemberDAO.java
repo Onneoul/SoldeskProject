@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -214,6 +215,7 @@ public class MemberDAO {
 				member_photo = URLDecoder.decode(member_photo, "euc-kr");
 				new File(path + "/" + member_photo).delete();
 
+				req.setAttribute("result", "회원탈퇴성공");
 				logout(req, res);
 				memberLoginCheck(req, res);
 			} else {
@@ -223,6 +225,14 @@ public class MemberDAO {
 			e.printStackTrace();
 			req.setAttribute("result", "회원탈퇴실패");
 		}
-		
 	}
+	
+	// Json용
+	public Members getMember(Member m, HttpServletRequest req) {		
+		List<Member> members 
+			= ss.getMapper(MemberMapper.class).getMemberByID2(m);		
+		Members ms = new Members(members);		
+		return ms;
+	}
+	
 }

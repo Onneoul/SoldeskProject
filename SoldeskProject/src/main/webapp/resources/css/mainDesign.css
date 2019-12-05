@@ -21,7 +21,11 @@ button {
 }
 
 #site_head_list {
-	width: 1000px;
+	right: 0px;
+}
+
+#result_place {
+	padding-left: 650px;
 }
 
 #site_title td{

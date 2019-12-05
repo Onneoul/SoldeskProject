@@ -22,9 +22,6 @@
 							src="resources/img/${sessionScope.loginMember.member_photo }"
 							id="updateMemberPhoto" width="100px" height="120px"></td>
 					</tr>
-					<tr>
-						<td><input name="member_photo" type="file"></td>
-					</tr>
 				</table>
 			</td>
 			<td>

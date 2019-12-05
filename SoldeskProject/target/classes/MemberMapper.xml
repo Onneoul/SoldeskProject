@@ -15,6 +15,14 @@
 		where member_id = #{member_id}
 	</select>
 	
+	<!-- AJAX용 -->
+	<select id="getMemberByID2" 
+		resultType="com.soldesk.spring.member.Member"
+		parameterType="com.soldesk.spring.member.Member">
+		select * from Member
+		where member_id=#{member_id}
+	</select>
+	
 	<!-- 회원정보 수정 -->
 	<update id="memberUpdate"
 		parameterType="com.soldesk.spring.member.Member">

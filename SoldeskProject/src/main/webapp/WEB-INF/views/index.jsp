@@ -7,9 +7,14 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/css/mainDesign.css">
 <link rel="stylesheet" href="resources/css/homeDesign.css">
+<link rel="stylesheet" href="resources/css/memberDesign.css">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="resources/js/go.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/check.js"></script>
+<script type="text/javascript" src="resources/js/jQuery.js"></script>
 </head>
 <body>
 	<table id="site_head">
@@ -17,6 +22,7 @@
 			<td>
 				<table id="site_head_area">
 					<tr>
+						<td id="result_place">${result }</td>
 						<td id="site_head_list" align="right"><jsp:include
 								page="${loginPage }"></jsp:include></td>
 					</tr>
@@ -30,12 +36,12 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td colspan="2">
 							<ul id="site_head_menu">
-								<li>메뉴1</li>
-								<li>메뉴2</li>
-								<li>메뉴3</li>
-								<li>메뉴4</li>
+								<li>공지사항</li>
+								<li>게시판</li>
+								<li>연극정보</li>
+								<li>고객센터</li>
 							</ul>
 						</td>
 					</tr>

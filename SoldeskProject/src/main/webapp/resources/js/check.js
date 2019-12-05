@@ -1,4 +1,4 @@
-function joinCheck() {
+function memberJoinCheck() {
 	
 	var idInput = document.memberJoinForm.member_id;
 	var pwInput = document.memberJoinForm.member_pw;

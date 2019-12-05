@@ -19,7 +19,14 @@ function goMemberUpdate() {
 }
 
 function goMemberDelete() {
-	location.href= "member.delete.go";
+	var ok = confirm("정말 탈퇴하시겠습니까?");
+	if (ok) {
+		location.href= "member.delete.go";
+		alert("탈퇴되었습니다.");
+	} else {
+		alert("취소하셨습니다.");
+	}
+	
 }
 
 function goMemberLogOut() {
