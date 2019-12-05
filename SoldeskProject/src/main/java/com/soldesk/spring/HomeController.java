@@ -18,8 +18,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req, HttpServletResponse res) {
-		mDAO.loginCheck(req, res);
-		req.setAttribute("SiteMain", "home.jsp");
+		mDAO.memberLoginCheck(req, res);
+		req.setAttribute("content", "home.jsp");
 		return "index";
 	}
 	

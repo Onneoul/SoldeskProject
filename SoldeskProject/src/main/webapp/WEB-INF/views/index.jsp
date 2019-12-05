@@ -46,7 +46,7 @@
 	<table id="site_content">
 		<tr>
 			<td id="SiteContent" align="center"><jsp:include
-					page="${SiteMain }"></jsp:include></td>
+					page="${content }"></jsp:include></td>
 		</tr>
 	</table>
 </body>

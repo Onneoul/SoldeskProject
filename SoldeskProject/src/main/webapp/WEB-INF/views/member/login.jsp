@@ -9,9 +9,9 @@
 <body>
 	<table>
 		<tr id="site_login">
-			<td><button onclick="goLogin();">로그인</button></td>
+			<td><button onclick="goMemberLogin();">로그인</button></td>
 			<td id="site_login_bar">|</td>
-			<td><button onclick="goJoin();">회원가입</button></td>
+			<td><button onclick="goMemberJoin();">회원가입</button></td>
 		</tr>
 	</table>
 </body>

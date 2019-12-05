@@ -8,14 +8,14 @@
 </head>
 <body>
 	<form action="member.login" method="post"
-				name="loginForm" onsubmit="return loginCheck();">
+				name="memberLoginForm" onsubmit="return MemberLoginCheck();">
 		<table id="login_table">
 			<tr>
-				<td>아이디</td><br>
+				<td>아이디</td>
 				<td><input name="member_id"></td>
 			</tr>
 			<tr>
-				<td>비밀번호</td><br>
+				<td>비밀번호</td>
 				<td><input name="member_pw" type="password"></td>
 			</tr>
 			<tr>

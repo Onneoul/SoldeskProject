@@ -2,10 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.soldesk.spring.member.MemberMapper">
 	
-	<insert id="join" parameterType="com.soldesk.spring.member.Member">
-		insert into Member values (Member_seq.nextval, #{member_id}, #{member_pw}, #{member_name}, #{member_addr}, #{member_photo}, 1)
+	<!-- 회원가입 -->
+	<insert id="memberJoin" parameterType="com.soldesk.spring.member.Member">
+		insert into Member values (Member_seq.nextval, #{member_id}, #{member_pw}, #{member_name}, #{member_addr}, #{member_photo}, #{member_level})
 	</insert>
 	
+	<!-- 회원 정보(ID로 검색) -->
 	<select id="getMemberByID" 
 		resultType="com.soldesk.spring.member.Member"
 		parameterType="com.soldesk.spring.member.Member">
@@ -13,4 +15,17 @@
 		where member_id = #{member_id}
 	</select>
 	
+	<!-- 회원정보 수정 -->
+	<update id="memberUpdate"
+		parameterType="com.soldesk.spring.member.Member">
+		update Member
+		set member_pw=#{member_pw}, member_addr=#{member_addr}, member_photo=#{member_photo}
+		where member_id=#{member_id}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="memberDelete"
+		parameterType="com.soldesk.spring.member.Member">
+			delete from Member where member_id = #{member_id}
+	</delete>
 </mapper>

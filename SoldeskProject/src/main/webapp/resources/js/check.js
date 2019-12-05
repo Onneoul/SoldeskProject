@@ -1,13 +1,13 @@
 function joinCheck() {
 	
-	var idInput = document.joinForm.member_id;
-	var pwInput = document.joinForm.member_pw;
-	var pwChkInput = document.joinForm.member_pwChk;
-	var nameInput = document.joinForm.member_name;
-	var addr1Input = document.joinForm.member_addr1;
-	var addr2Input = document.joinForm.member_addr2;
-	var addr3Input = document.joinForm.member_addr3;
-	var photoInput = document.joinForm.member_photo;
+	var idInput = document.memberJoinForm.member_id;
+	var pwInput = document.memberJoinForm.member_pw;
+	var pwChkInput = document.memberJoinForm.member_pwChk;
+	var nameInput = document.memberJoinForm.member_name;
+	var addr1Input = document.memberJoinForm.member_addr1;
+	var addr2Input = document.memberJoinForm.member_addr2;
+	var addr3Input = document.memberJoinForm.member_addr3;
+	var photoInput = document.memberJoinForm.member_photo;
 
 	if(isEmpty(idInput) || containsHS(idInput)) {
 		alert("ID입력을 다시 확인하세요.");
