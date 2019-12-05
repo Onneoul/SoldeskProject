@@ -98,7 +98,7 @@ public class MemberController {
 		return "index";
 	}
 
-	
+	/*
 	@RequestMapping(value = "member.get", 
 			method = RequestMethod.GET, 
 			produces = "application/json; charset=utf-8")
@@ -107,4 +107,5 @@ public class MemberController {
 
 		return mDAO.getMember(m, req);
 	}
+	*/
 }

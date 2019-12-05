@@ -44,7 +44,7 @@
 		<beans:property name="mapperLocations">
 			<beans:list>
 				<beans:value>classpath:MemberMapper.xml</beans:value>
-				<beans:value>classpath:InfoMapper.xml</beans:value>
+				<beans:value>classpath:TheaterMapper.xml</beans:value>
 				<beans:value>classpath:NoticeMapper.xml</beans:value>
 				<beans:value>classpath:SNSMapper.xml</beans:value>
 			</beans:list>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TheaterMapper">
+	<select id="theaterCount" resultType="java.lang.Integer"
+							parameterType="com.soldesk.spring.info.theater.TheaterSelector">
+		select count(*) from theater_info where theater_title = '%'||#{search}||'%'
+	</select>
+	
+	<insert id="theaterWrite" parameterType="com.soldesk.spring.info.theater.TheaterInfo">
+		insert into theater_info values(theater_info_seq.nextval, #{theater_title}, #{theater_photo}, #{theater_time}, #{theater_age})
+	</insert>
+	
+	<select id="getTheater" parameterType="com.soldesk.spring.info.theater.TheaterSelector" 
+							resultType="com.soldesk.spring.info.theater.TheaterInfo">
+							
+		select * 
+			from 
+				(select rownum as rn, theater_photo, theater_title, theater_time, theater_age, theater_number 
+					from 
+						(select * 
+							from theater_info
+								where notice_text like '%'||#{search}||'%' order by theater_number desc
+						)
+				) where rn &gt;= #{start} and rn &lt;= #{end}					
+	</select>
+	
+	<select id="getTheaterPerson" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.person.Person">
+		select code_comment, person_number, person_name
+			from 
+				(select * from theater_info, person, code, casting)
+			where theater_number = #{theater_number};
+	</select>
+	
+	<select id="getTheaterGenre" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.genre.Genre">
+	
+	</select>
+	
+	<select id="getTheaterOrganization" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.organization.Organization">
+	
+	</select>
+	
+	<select id="getTheaterStage" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.stage.Stage">
+	
+	</select>
+	
+	<select id="getTheaterDateTime" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.datetime.Date_time">
+		select theater_date, date_number
+			from 
+				(select * from theater_info, dateTime, theater_dateTime)
+					where theater_number = #{theater_number}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

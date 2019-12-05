@@ -227,6 +227,7 @@ public class MemberDAO {
 		}
 	}
 	
+	/*
 	// Json용
 	public Members getMember(Member m, HttpServletRequest req) {		
 		List<Member> members 
@@ -234,5 +235,6 @@ public class MemberDAO {
 		Members ms = new Members(members);		
 		return ms;
 	}
+	*/
 	
 }
