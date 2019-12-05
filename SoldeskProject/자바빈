@@ -1,0 +1,58 @@
+JavaBean 
+	- Member.java
+		member_id (string) primary key
+		member_pw (string)
+		member_name (string)
+		member_addr (string)
+		member_photo (string)
+	
+	- sns.java
+		sns_number (number) primary key
+		sns_writter (string)
+		sns_text (string)
+		sns_date (date)
+		sns_reply list<SNSReply> sns_reply;
+	
+	- sns_reply.java
+		reply_number (number) primary key
+		reply_writter (string)
+		reply_sns_number (number)
+		reply_text (string)
+		reply_date (date)
+		
+	- notice.java
+		notice_number (number) primary key
+		notice_writter (string)
+		notice_text (string)  -> 1500 char로 크기가 크니 post 방식으로 전송
+		notice_date (date)
+		
+	- theater_info
+		theater_number (number)
+		theater_title (string)
+		theater_genre (string)
+		theater_date (DATE)
+		theater_place (string)
+		theater_producer (string)
+		theater_group (string)
+		theater_time (number)
+		
+	- producer
+		producer_number (number)
+		producer_name (string)
+		producer_birth (date)
+		producer_birthplace (string)
+		producer_photo (string)
+		
+	- actor
+		actor_number (number)
+		actor_name (name)
+		actor_birth (date)
+		actor_birthplace (string)
+		actor_photo (string)
+	
+	- theater_stage
+		stage_name (string)
+		stage_addr (string)
+		stage_date (date)
+		stage_photo (string)
+		
