@@ -1,5 +1,5 @@
 function toTheaterInfo() {
-	location.href = "theaterInfo.com/theater";
+	location.href = "TheaterInfo.com.theater";
 }
 
 function toTheaterDetail(theater_number) {

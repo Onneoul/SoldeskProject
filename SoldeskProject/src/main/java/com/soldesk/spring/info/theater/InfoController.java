@@ -13,21 +13,25 @@ import com.soldesk.spring.member.MemberDAO;
 @Controller
 public class InfoController {
 
+	private boolean firstConnect;
+	
 	@Autowired
 	TheaterDAO idao;
 	
 	@Autowired
 	MemberDAO mdao;
 	
-	@RequestMapping(value = "theaterInfo.com/theater", method = RequestMethod.GET)
+	@RequestMapping(value = "TheaterInfo.com.theater", method = RequestMethod.GET)
 	public String getTheaterInfo(HttpServletRequest req, HttpServletResponse rep) {
+		mdao.memberLoginCheck(req, rep);
 		idao.getInfo(1, req, rep);
-		req.setAttribute("content", "info/theater_info.jsp");
+		req.setAttribute("content", "info/theater.jsp");
 		return "index";
 	}
 	
-	@RequestMapping(value = "theaterInfo.com/theater/Detail", method = RequestMethod.GET)
+	@RequestMapping(value = "TheaterInfo.com/theater/Detail", method = RequestMethod.GET)
 	public String moveTheaterInfo(HttpServletRequest req, HttpServletResponse rep) {
+		mdao.memberLoginCheck(req, rep);
 		idao.getInfo(1, req, rep);
 		int p = Integer.parseInt(req.getParameter("p"));
 		idao.getInfo(p, req, rep);

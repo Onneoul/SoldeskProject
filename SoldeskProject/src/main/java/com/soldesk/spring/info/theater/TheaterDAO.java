@@ -2,9 +2,7 @@ package com.soldesk.spring.info.theater;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.soldesk.spring.SiteOption;
 import com.soldesk.spring.info.date_time.Date_time;
 
+@Service
 public class TheaterDAO {
 	
 	private int allMsgCount;
@@ -29,10 +29,10 @@ public class TheaterDAO {
 	}
 	
 	@Autowired
-	SqlSession ss;
+	private SqlSession ss;
 	
 	@Autowired
-    SiteOption so;
+    private SiteOption so;
 	
 	public void searchNotice(TheaterSelector ts, HttpServletRequest req, HttpServletResponse rep) {
 		req.getSession().setAttribute("search", ts);
@@ -73,9 +73,9 @@ public class TheaterDAO {
 			
 			List<TheaterInfo> lt = ss.getMapper(TheaterMapper.class).getTheater(search);
 			for (TheaterInfo ti : lt) {
-				ti.setTheater_genre(ss.getMapper(TheaterMapper.class).getTheaterGenre(ti));
+				//ti.setTheater_genre(ss.getMapper(TheaterMapper.class).getTheaterGenre(ti));
 				ti.setTheater_person(ss.getMapper(TheaterMapper.class).getTheaterPerson(ti));
-				ti.setTheater_date_time(ss.getMapper(TheaterMapper.class).getTheaterDatetime(ti)); // date_time 리스트 생성
+				/*ti.setTheater_date_time(ss.getMapper(TheaterMapper.class).getTheaterDatetime(ti)); // date_time 리스트 생성
 				for (Date_time dt : ti.getTheater_date_time()) { // For 문 돌려서 공연 시작 날짜와 끝나는 날짜 구하기
 					dl.add(sdf.format(dt.getTheater_date())); // Date_time의 Theater_date를 String List dl에 추가
 					for (int i = 0; i <= dl.size(); i++) {
@@ -85,10 +85,10 @@ public class TheaterDAO {
 					end_number = Collections.max(dl2); // dl2의 최댓값 구하기 (제일 최근 날짜)
 				}
 				ti.setStart_date(sdf2.format((""+ start_number))); // sdf2로 형변환 후 Start_date에 set
-				ti.setEnd_date(sdf2.format((""+ end_number)));
+				ti.setEnd_date(sdf2.format((""+ end_number))); */
 			}
 			
-			req.setAttribute("TheaterInfoList", "lt");
+			req.setAttribute("TheaterInfo", lt);
 			// lt 에 들어있는 것 - List<Genre> theater_genre, List<Person> theater_person, Strat_date, End_date,
 			// 					 rownum as rn, theater_number, theater_photo, theater_title, theater_time, theater_age
 			// 					다만 rn은 사이트에 노출될 일은 없다.

@@ -10,6 +10,7 @@ import com.soldesk.spring.info.organization.Organization;
 import com.soldesk.spring.info.person.Person;
 import com.soldesk.spring.info.stage.Stage;
 
+
 public class TheaterInfo {
 	private BigDecimal theater_number;
 	private String theater_title;
