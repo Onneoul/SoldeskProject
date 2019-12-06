@@ -88,3 +88,34 @@ CREATE TABLE code (
 	code_comment varchar2(20) NOT NULL,
 	code number(2) NOT NULL
 );
+
+create sequence theater_seq;
+create sequence person_seq;
+create sequence date_seq;
+create sequence stage_seq;
+create sequence group_seq;
+insert into theater_info values (theater_seq.nextval, '고도를 기다리', '1', 120, 15);
+insert into theater_info values (theater_seq.nextval, '뽀로로', '1', 90, 7);
+insert into theater_info values (theater_seq.nextval, '가나다', '1', 110, 15);
+insert into person values (person_seq.nextval, 'Kim', sysdate, '청주', '1', 01);
+insert into person values (person_seq.nextval, 'Lee', sysdate, '홍성', '1', 02);
+insert into person values (person_seq.nextval, 'Park', sysdate, '양주', '1', 02);
+insert into person values (person_seq.nextval, 'Hong', sysdate, '파주', '1', 02);
+insert into code values ('person','감독',01);
+insert into code values ('person', '배우', 02);
+
+select * from code;
+delete code;
+
+insert into casting values (1, 1);
+insert into casting values (1, 2);
+insert into casting values (1, 4);
+insert into casting values (2, 1);
+insert into casting values (2, 3);
+insert into casting values (2, 2);
+insert into casting values (3, 1);
+insert into casting values (3, 3);
+
+select * from (
+	select rownum as rn, theater_title, theater_number, person_name, code, code_comment from (select t.theater_number, p.person_number, c.code, code_comment, person_name, theater_title from theater_info t, person p, code c, casting g group by theater_number)
+) where theater_number = 1;

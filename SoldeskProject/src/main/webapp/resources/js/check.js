@@ -44,3 +44,13 @@ function memberJoinCheck() {
 	return true;
 	alert("가입완료");
 }
+function snsWriteCheck() {
+	var textInput = document.snsWriteForm.sns_text;
+
+	if (isEmpty(textInput)) {
+		alert("작성하지 않아 등록할 수 없습니다.")
+		textInput.focus();
+		return false;
+	}
+	return true;
+}

@@ -1,3 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="MemberMapper"></mapper>
+<mapper namespace="com.soldesk.spring.sns.SNSMapper">
+	<insert id="snsWrite" parameterType="com.soldesk.spring.sns.SNS">
+		insert into SNS
+		values(SNS_seq.nextval, #{sns_user}, #{sns_text}, sysdate)
+	</insert>
+
+	<select id="snsView"
+		parameterType="com.soldesk.spring.sns.SNSSelector"
+		resultType="com.soldesk.spring.sns.SNS">
+		select * 
+		from (
+			select rownum as rn, sns_number, sns_user, sns_text, sns_date, member_photo
+			from (
+				select *
+				from SNS, Member 
+				where sns_user = member_id and sns_text like '%'||#{search}||'%'
+			order by sns_date desc
+			)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	
+	<!-- 메세지 총 개수 -->
+	<select id="getSNSCount" 
+		parameterType="com.soldesk.spring.sns.SNSSelector"
+		resultType="java.lang.Integer">
+		select count(*) from SNS, member 
+		where sns_user = member_id and sns_text like '%'||#{search}||'%'
+	</select>
+	
+	<!-- reply 가져오기 -->
+	<select id="getReply"
+		parameterType="com.soldesk.spring.sns.SNS"
+		resultType="com.soldesk.spring.sns.SNSReply">
+		select * from sns_reply s where reply_number_num = #{sns_number}
+	</select>
+	
+	<!-- 리플쓰기 -->
+	<insert id="replyWrite" parameterType="com.soldesk.spring.sns.SNSReply">
+		insert into sns_reply values(#{reply_user}, #{reply_number}, sysdate, #{reply_text}, sns_reply_seq.nextval)
+	</insert>
+</mapper>

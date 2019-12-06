@@ -98,7 +98,7 @@ public class MemberController {
 		return "index";
 	}
 
-	
+	// Json용
 	@RequestMapping(value = "member.get", 
 			method = RequestMethod.GET, 
 			produces = "application/json; charset=utf-8")

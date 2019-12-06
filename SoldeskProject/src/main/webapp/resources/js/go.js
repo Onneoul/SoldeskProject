@@ -26,9 +26,12 @@ function goMemberDelete() {
 	} else {
 		alert("취소하셨습니다.");
 	}
-	
 }
 
 function goMemberLogOut() {
 	location.href= "member.logout";
+}
+
+function goSNS() {
+	location.href = "sns.view";
 }
