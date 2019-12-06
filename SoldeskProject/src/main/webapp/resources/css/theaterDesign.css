@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+#theaterMain {
+	border-spacing: 0px 5px;
+}
+
+#currentPage {
+	margin-left: 50PX;
+}
+
+.underbar {
+	width: 1000px;
+	border-bottom: 1px solid black;
+}
+
+
+#theaterButton {
+	margin-left: 40px;
+	border: none;
+	outline: none;
+	background-color: coral;
+	height: 30px;
+	width: 70px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 3px black;
+}
+
+#theaterButton2 {
+	border: none;
+	outline: none;
+	background-color: #FFD854;
+	height: 30px;
+	width: 70px;
+	border-radius: 5px;
+}
+
+#theaterSelect {
+	border-bottom: 1px solid coral;
+}
+
