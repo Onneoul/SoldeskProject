@@ -9,24 +9,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="sns.index" method="post">
-	<table>
-		<tr>
-			<td>SNS소통 게시판</td>
-		</tr>
-		<tr>
-			<td><input name="search"></td>
-			<td><button>검색</button></td>
-		</tr>
-	</table>
-</form>
-	<table>
+	<div id="sns_title">SNS 게시판</div>
+	<form action="sns.index" method="post">
+		<table id="sns_head_area">
+			<tr>
+				<td id="sns_index_text">
+					<input name="search">
+				</td>
+				<td id="sns_index_btn">
+					<button><img src="resources/img/06-magnify.png"></button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<table id="sns_snswrite_area">
 		<tr>
 			<td>
 				<form action="sns.write" method="POST" name="snsWriteForm"
 					onsubmit="return snsWriteCheck();">
 					<input type="hidden" name="token" value="${token }">
-					<table>
+					<table id="sns_snswrite_input">
 						<tr>
 							<td><textarea name="sns_text" maxlength="250"
 									placeholder="무슨생각을 하고 계신가요?"></textarea></td>
@@ -37,29 +39,62 @@
 			</td>
 		</tr>
 	</table>
+	<table>
+		<tr align="right">
+			<td id="sns_all_count">게시글 목록 총 	개 검색되었습니다.</td>
+		</tr>
+	</table>
 	<c:forEach var="s" items="${snss}">
-		<table>
-			<tr>
-				<td>${s.sns_user }</td>
-			</tr>
-			<tr>
-				<td>${s.sns_date }</td>
-			</tr>
-			<tr>
-				<td>${s.sns_text }</td>
-			</tr>
-			<tr>
-				<td>
-				<c:forEach var="sr" items="${s.sns_replys }">
-					<span>${sr.reply_date }</span>
-					<span>${sr.reply_text }</span>
-					<c:if test="${sr.reply_user == sessionScope.loginMember.member_id }">
-						<button onclick="deleteSNSReply(${sr.reply_number}, ${curPage });">삭제하기</button>
-					</c:if>
-				<br>
-				</c:forEach>
+		<table id="sns_view_area">
+			<tr class="sns_view_tr1">
+				<td class="sns_view_td2">작성자 &nbsp;&nbsp;&nbsp;<span class="sns_view_re">${s.sns_user }</span></td>
+				<td class="sns_view_re">
+				<c:if test="${s.sns_user == sessionScope.loginMember.member_id }">
+					<span onclick="snsUpdate(${s.sns_number}, ${s.sns_text}, ${curPage });">수정</span>&nbsp;&nbsp;&nbsp;
+					<span onclick="snsDelete(${s.sns_number });">삭제</span>
+				</c:if>
 				</td>
 			</tr>
+			<tr class="sns_view_tr1">
+				<td class="sns_view_td1">작성일 &nbsp;&nbsp;&nbsp;<fmt:formatDate value="${s.sns_date }" type="both" pattern="MM/dd hh:mm" timeStyle="short" /></td>
+			</tr>
+			<tr>			
+				<td class="sns_view_td3">${s.sns_text }</td>
+			</tr>
+				<tr>
+					<td class="sns_reply_text">[댓글]</td>
+				</tr>	
+			<c:forEach var="sr" items="${s.sns_replys }">
+				<tr>
+					<td class="sns_reply_area">
+						<span class="sns_reply_user">${sr.reply_user }</span>
+						<span class="sns_reply_text">${sr.reply_text }</span>
+						<span class="sns_reply_date">
+							<fmt:formatDate value="${sr.reply_date }" type="both" pattern="MM/dd hh:mm" timeStyle="short" />
+						</span>
+						<c:if test="${sr.reply_user == sessionScope.loginMember.member_id }">
+							<button class="sns_reply_delbtn" onclick="deleteSNSReply(${sr.reply_number}, ${curPage });">삭제하기</button>
+						</c:if>
+						<br>
+					</td>
+				</tr>
+			</c:forEach>
+			<c:if test="${sessionScope.loginMember != null }">
+				<tr>
+					<td class="sns_reply_write">
+						<form action="sns.reply.write"
+							onsubmit="return snsReplyWriteCheck(this);">
+							<span class="SNSReply_id">${sessionScope.loginMember.member_id }</span>
+							<input id="SNSComment_me" type="hidden" name="token"
+								value="${token }"> <input type="hidden"
+								name="reply_number_num" value="${s.sns_number }"> <input
+								type="hidden" name="p" value="${curPage }"> <input
+								class="SNSReply_txt" name="reply_text" maxlength="800">
+							<button class="SNSComment_btn">댓글쓰기</button>
+						</form>
+					</td>
+				</tr>
+			</c:if>
 		</table>
 	</c:forEach>
 </body>

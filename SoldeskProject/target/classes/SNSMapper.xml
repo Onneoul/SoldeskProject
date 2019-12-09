@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.soldesk.spring.sns.SNSMapper">
+	
+	<!-- SNS 글쓰기 -->
 	<insert id="snsWrite" parameterType="com.soldesk.spring.sns.SNS">
 		insert into SNS
 		values(SNS_seq.nextval, #{sns_user}, #{sns_text}, sysdate)
 	</insert>
+	
+	<!-- SNS 리플쓰기 -->
+	<insert id="replyWrite" parameterType="com.soldesk.spring.sns.SNSReply">
+		insert into sns_reply values(#{reply_user}, sns_reply_seq.nextval, sysdate, #{reply_text}, #{reply_number_num})
+	</insert>
+	
+	<!-- SNS 리플삭제 -->
+	<delete id="replyDelete"
+		parameterType="com.soldesk.spring.sns.SNSReply">
+		delete from sns_reply
+		where reply_number = #{reply_number}
+	</delete>
 
+	<!-- SNS 메인뷰 -->
 	<select id="snsView"
 		parameterType="com.soldesk.spring.sns.SNSSelector"
 		resultType="com.soldesk.spring.sns.SNS">
@@ -30,15 +45,23 @@
 		where sns_user = member_id and sns_text like '%'||#{search}||'%'
 	</select>
 	
-	<!-- reply 가져오기 -->
+	<!-- 리플 가져오기 -->
 	<select id="getReply"
 		parameterType="com.soldesk.spring.sns.SNS"
 		resultType="com.soldesk.spring.sns.SNSReply">
-		select * from sns_reply s where reply_number_num = #{sns_number}
+		select * from sns_reply where reply_number_num = #{sns_number}
 	</select>
 	
-	<!-- 리플쓰기 -->
-	<insert id="replyWrite" parameterType="com.soldesk.spring.sns.SNSReply">
-		insert into sns_reply values(#{reply_user}, #{reply_number}, sysdate, #{reply_text}, sns_reply_seq.nextval)
-	</insert>
+	<!-- SNS 삭제하기 -->
+	<delete id="snsDelete"
+		parameterType="com.soldesk.spring.sns.SNS">
+		delete from SNS where sns_number = #{sns_number}
+	</delete>
+
+	<!-- SNS 수정하기 -->
+	<update id="snsUpdate"
+		parameterType="com.soldesk.spring.sns.SNS">
+		update SNS set sns_text = #{sns_text} where sns_number = #{sns_number}
+	</update>
+
 </mapper>

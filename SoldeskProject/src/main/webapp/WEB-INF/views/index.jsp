@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="resources/css/mainDesign.css">
 <link rel="stylesheet" href="resources/css/homeDesign.css">
 <link rel="stylesheet" href="resources/css/memberDesign.css">
+<link rel="stylesheet" href="resources/css/snsDesign.css">
 <link rel="stylesheet" href="resources/css/theaterDesign.css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

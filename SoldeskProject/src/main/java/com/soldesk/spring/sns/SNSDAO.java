@@ -17,11 +17,27 @@ import com.soldesk.spring.member.Member;
 public class SNSDAO {
 	private int allSNSCount;
 
+	public int getAllSNSCount() {
+		return allSNSCount;
+	}
+
+	public void setAllSNSCount(int allSNSCount) {
+		this.allSNSCount = allSNSCount;
+	}
+
 	@Autowired
 	private SqlSession ss;
 	@Autowired
 	private SiteOption so;
 
+	// 전체메세지 개수확인
+	public void calcAllMsgCount() {
+
+		SNSSelector sSel = new SNSSelector("", null, null);
+		allSNSCount = ss.getMapper(SNSMapper.class).getSNSCount(sSel);
+		System.out.println(allSNSCount);
+	}
+	
 	// SNS글쓰기 기능
 	public void snsWrite(SNS s, HttpServletRequest req, HttpServletResponse res) {
 		try {
@@ -33,7 +49,6 @@ public class SNSDAO {
 			}
 
 			Member m = (Member) req.getSession().getAttribute("loginMember");
-			// s.setMember_id(m.getMember_id());
 			s.setSns_user(m.getMember_id());
 			
 			String sns_text = s.getSns_text();
@@ -42,7 +57,7 @@ public class SNSDAO {
 			if (ss.getMapper(SNSMapper.class).snsWrite(s) == 1) {
 				req.setAttribute("result", "등록완료");
 				System.out.println("성공");
-				// allSNSCount++;
+				allSNSCount++;
 				req.getSession().setAttribute("successToken", token);
 			} else {
 				req.setAttribute("result", "등록실패");
@@ -96,5 +111,73 @@ public class SNSDAO {
 		req.getSession().setAttribute("search", sSel);
 	}
 	
-	
+	// 댓글쓰기 기능
+	public void replyWrite(SNSReply sr, HttpServletRequest req, HttpServletResponse res) {
+			try {
+				String token = req.getParameter("token");
+				String successToken = (String) req.getSession().getAttribute("successToken");
+
+				if (successToken != null && token.equals(successToken)) {
+					return;
+				}
+				
+				Member m = (Member) req.getSession().getAttribute("loginMember");
+				
+				sr.setReply_user(m.getMember_id());
+				
+				if (ss.getMapper(SNSMapper.class).replyWrite(sr) == 1) {
+					req.setAttribute("result", "댓글쓰기성공");
+					req.getSession().setAttribute("successToken", token);
+				} else {
+					System.out.println("실패");
+					req.setAttribute("result", "댓글쓰기실패");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				req.setAttribute("result", "댓글쓰기실패");
+			}
+		}
+
+	// 댓글삭제 기능
+		public void replyDelete(SNSReply sr, HttpServletRequest req, HttpServletResponse res) {
+			try {
+				if (ss.getMapper(SNSMapper.class).replyDelete(sr) == 1) {
+					req.setAttribute("result", "댓글삭제성공");
+				} else {
+					req.setAttribute("result", "댓글삭제실패");
+				}			
+			} catch (Exception e) {
+				e.printStackTrace();
+				req.setAttribute("result", "댓글삭제실패");
+			}
+		}		
+
+	// SNS 삭제
+		public void snsDelete(SNS s, HttpServletRequest req, HttpServletResponse res) {
+			try {
+				if (ss.getMapper(SNSMapper.class).snsDelete(s) == 1) {
+					req.setAttribute("result", "글삭제성공");
+					allSNSCount--;
+				} else {
+					req.setAttribute("result", "글삭제실패");
+				}			
+			} catch (Exception e) {
+				e.printStackTrace();
+				req.setAttribute("result", "글삭제실패");
+			}
+		}
+
+	// SNS 수정
+	public void snsUpdate(SNS s, HttpServletRequest req, HttpServletResponse res) {			
+		try {
+			if (ss.getMapper(SNSMapper.class).snsUpdate(s) == 1) {
+				req.setAttribute("result", "글수정성공");
+			} else {
+				req.setAttribute("result", "글수정실패");
+			}			
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "글수정실패");
+		}		
+	}
 }

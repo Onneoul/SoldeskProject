@@ -54,3 +54,14 @@ function snsWriteCheck() {
 	}
 	return true;
 }
+
+function snsReplyWriteCheck() {
+	var textInput = f.txt;
+	
+	if (isEmpty(textInput)) {
+		alert("댓글을 입력하세요.");
+		textInput.focus();
+		return false;
+	}
+	return true;
+}

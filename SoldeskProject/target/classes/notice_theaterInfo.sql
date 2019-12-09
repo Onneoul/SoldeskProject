@@ -119,3 +119,7 @@ insert into casting values (3, 3);
 select * from (
 	select rownum as rn, theater_title, theater_number, person_name, code, code_comment from (select t.theater_number, p.person_number, c.code, code_comment, person_name, theater_title from theater_info t, person p, code c, casting g group by theater_number)
 ) where theater_number = 1;
+
+select * from theater_info;
+
+alter table theater_info rename column thaeter_time to theater_time;

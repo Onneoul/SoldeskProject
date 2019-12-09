@@ -63,7 +63,5 @@ public class SNSReply {
 	public void setReply_number_num(BigDecimal reply_number_num) {
 		this.reply_number_num = reply_number_num;
 	}
-
-	
 	
 }

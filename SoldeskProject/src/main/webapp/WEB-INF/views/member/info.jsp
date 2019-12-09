@@ -7,19 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
-		<tr>
-			<td>회원정보</td>
-		</tr>
+	<div id="info_text">회원정보</div>
+	<table id="info_area">
 		<tr>
 			<td>
-				<table id="insertMemberPhoto">
+				<table id="info_table">
 					<tr>
-						<td>프로필 사진</td>
+						<td align="center">프로필 사진</td>
 					</tr>
 					<tr>
-						<td><img
-							src="resources/img/${sessionScope.loginMember.member_photo }"
+						<td>
+							<img src="resources/img/${sessionScope.loginMember.member_photo }"
 							id="updateMemberPhoto" width="100px" height="120px"></td>
 					</tr>
 				</table>
@@ -40,10 +38,10 @@
 					</tr>
 				</table>
 			</td>
-		<tr>
-			<td><button onclick="goMemberUpdate();">수정하기</button></td>
-			<td><button onclick="goMemberDelete();">탈퇴하기</button></td>
-		</tr>
 	</table>
+
+<button onclick="goMemberUpdate();">수정하기</button>
+<button onclick="goMemberDelete();">탈퇴하기</button>
+
 </body>
 </html>

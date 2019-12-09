@@ -51,3 +51,42 @@
 	color: white;
 	border: none;
 }
+
+#loginform_area {
+	
+}
+
+#loginform_text {
+	font-size: 30px;
+	font-weight: 700;
+	padding-bottom: 15px;
+}
+
+.loginform_input input {
+	width: 300px;
+	height: 40px;
+	padding: 2px 7px;
+	margin-bottom: 15px;
+	border: 2px solid #46B8FF;
+}
+
+#loginform_btn button {
+	margin-top: 15px;
+	width: 320px;
+	height: 55px;
+	background-color: #46B8FF;
+	border: none;
+	color: white;
+	font-size: 22px;
+	font-weight: 700;
+}
+
+#info_text {
+	font-size: 30px;
+	font-weight: 700;
+	padding-bottom: 15px;
+}
+
+#info_area {
+	border: 2px solid #46B8FF;
+}

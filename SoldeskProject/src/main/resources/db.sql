@@ -40,6 +40,7 @@ CREATE TABLE SNS
 
 create sequence sns_reply_seq;
 
+
 select * from Member where member_id = 'test';
 
 select * from sns;
@@ -56,7 +57,7 @@ select *
 		)
 where rn &gt;= #{start} and rn &lt;= #{end};
 
-drop table member;
+drop sequence sns_reply_seq;
 
 CREATE TABLE sns_reply
 (
@@ -72,27 +73,30 @@ CREATE TABLE sns_reply
 CREATE TABLE sns_reply
 (
     reply_user       VARCHAR2(10)    NOT NULL, 
-    reply_number      NUMBER(10)      NOT NULL, 
+    reply_number      NUMBER(10)     PRIMARY KEY, 
     reply_date      DATE            NOT NULL, 
     reply_text      VARCHAR2(80)    NOT NULL, 
-    reply_number_num    number(4)       primary key,
-    CONSTRAINT FK_sns_reply_reply_number_SNS_ FOREIGN KEY (reply_number)
+    reply_number_num    number(4)      	NOT NULL,
+    CONSTRAINT FK_sns_reply_reply_number_SNS_ FOREIGN KEY (reply_number_num)
         REFERENCES SNS (sns_number) on delete cascade,
 	CONSTRAINT FK_sns_reply_reply_user_Member FOREIGN KEY (reply_user)
         REFERENCES Member (member_id) on delete cascade
     ); 
     
+drop table sns_reply;
 select * from casting;
     
 select * from (select ti.theater_number as tn, c.code, p.person_number, p.person_name from (select * from theater_info t, person p, code c, casting g where ti.theater_number = g.person_number)) where tn = 5;
 
 select * from sns_reply where reply_number = 1;
 select * from sns_reply;
-insert into sns_reply values ('123', 1, sysdate, '1', 1); 
+insert into sns_reply values (123, '21', sysdate, '1', 10); 
 select * from sns;
-select * from sns_reply;
+select * from sns_reply_seq;
 
 insert into sns_reply values('123', 21, sysdate, '1', sns_reply_seq.nextval);
 
 select count(*) from SNS s, member m
 where s.member_id = m.member_id;
+
+select * from sns_reply where reply_number = #{sns_number};
