@@ -98,18 +98,4 @@ public class MemberController {
 		return "index";
 	}
 
-<<<<<<< HEAD
-	// Json용
-=======
-	/*
->>>>>>> refs/remotes/origin/master
-	@RequestMapping(value = "member.get", 
-			method = RequestMethod.GET, 
-			produces = "application/json; charset=utf-8")
-	public @ResponseBody Members memberGet(Member m, 
-			HttpServletRequest req, HttpServletResponse res) {
-
-		return mDAO.getMember(m, req);
-	}
-	*/
 }

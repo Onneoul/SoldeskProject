@@ -41,13 +41,8 @@
 						<td colspan="2">
 							<ul id="site_head_menu">
 								<li>공지사항</li>
-<<<<<<< HEAD
 								<li onclick="goSNS();">게시판</li>
-								<li>연극정보</li>
-=======
-								<li>게시판</li>
 								<li><a href="TheaterInfo.com.theater">공연정보</a></li>
->>>>>>> refs/remotes/origin/master
 								<li>고객센터</li>
 							</ul>
 						</td>

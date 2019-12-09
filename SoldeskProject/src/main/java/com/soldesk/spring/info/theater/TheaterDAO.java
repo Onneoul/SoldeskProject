@@ -45,7 +45,7 @@ public class TheaterDAO {
     	SimpleDateFormat sdf2 = null;
     	
     	try {
-    		int count = so.getNoticePageCount();
+    		int count = so.getSnsCountPerPage();
 			int start = (page - 1) * count + 1;
 			int end = start + (count - 1);
 			

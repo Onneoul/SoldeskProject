@@ -65,10 +65,6 @@
 		<beans:constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</beans:bean>
-	<beans:bean id="SiteOption" class="com.soldesk.spring.SiteOption">
-		<beans:constructor-arg value="10"></beans:constructor-arg>
-	</beans:bean>
-
 	<beans:bean id="so" class="com.soldesk.spring.SiteOption">
 		<beans:constructor-arg value="10"></beans:constructor-arg>
 	</beans:bean>
