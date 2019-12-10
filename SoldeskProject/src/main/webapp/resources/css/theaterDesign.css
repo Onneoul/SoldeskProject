@@ -38,3 +38,57 @@
 	border-bottom: 1px solid coral;
 }
 
+#theater_title {
+	left: 40px;
+}
+
+
+.theaterList {
+	width: 700px;
+	height: 400px;
+}
+
+#theaterDetail {
+	width: 800px;
+	height: 500px;
+}
+
+#poster{
+	width: 250px;
+	height: 350px;
+}
+
+#detailMove {
+	width: 500px;
+	border-top: 2px solid gray;
+	border-spacing: 0px;
+	list-style: none;
+	display: block;
+	padding: 0px;
+	margin: 0px;
+	margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.detailMenu {
+	line-height: 20px;
+	text-align: center;
+	float: left;
+	list-style: none;
+	display: block;
+	position: relative;
+}
+
+.detailMove a:after {
+	content : "";
+  	position: absolute;
+  	right    : 0;
+ 	z-index: 100;
+	top  : 25%;
+	width  : 3px;
+ 	height   : 50%;
+	background: #555;
+}

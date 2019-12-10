@@ -27,37 +27,34 @@
 			<td colspan="3" class="underbar"></td>
 		</tr>
 	</table>
-	<table id="theaterInfoView">
-			<c:forEach var="ti" items="${TheaterInfo }">
-				<tr align="center">
-					<table>
-						<tr>
-							<td rowspan="5"><img src="resource/theaterPoster/${ti.theater_photo }"></td>
-						</tr>
-						<tr>
-							<td>${ti.theater_title }</td>
-						</tr>
-						<tr>
-							<td>${ti.start_date }~</td>
-							<td>${ti.end_date }</td>
-						</tr>
-						<tr>
-							<td>${ti.theater_age }</td>
-						</tr>
-						<tr>
-							<td><c:forEach var="P" items="${ti.theater_person }">
-									<c:if test="${P.code_comment == '02' }">
-										<span>${P.person_name }</span>
-									</c:if>
-								</c:forEach>
-							</td>
-						</tr>
-					</table>
-				</tr>
-			</c:forEach>
-	</table>
-
-
-
+	<c:forEach var="ti" items="${TheaterInfo }">
+		<table class="theaterList" onclick="toTheaterDetail(${ti.theater_number})">
+			<tr>
+				<td rowspan="5"><img src="resource/theaterPoster/${ti.theater_photo }"></td>
+			</tr>
+			<tr>
+				<td><h3>${ti.theater_title }</h3></td>
+			</tr>
+			<tr>
+				<td>${ti.start_date }~</td>
+				<td>${ti.end_date }</td>
+			</tr>
+			<tr>
+				<td>${ti.theater_age }세 이상</td>
+			</tr>
+			<tr>
+				<td>${ti.theater_time }분</td>
+			</tr>
+			<tr>
+				<td><c:forEach var="P" items="${ti.theater_person }">
+						<c:if test="${P.code == '02' }">
+							<span>${P.person_name }</span>
+						</c:if>
+					</c:forEach>
+				</td>
+			</tr>
+		</table>
+	</c:forEach>
+	
 </body>
 </html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soldesk.spring.info.person.PersonMapper">
+	<select id="getPersonInfo" parameterType="com.soldesk.spring.info.person.Person" resultType="com.soldesk.spring.info.person.Person">
+		select person_number, person_name, person_birth
+			from person where person_number = #{person_number}
+	</select>
+
+	<select id="getTheaterDetailPerson" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.theater.TheaterInfo">
+		select theater_number, person_number, person_name, code, code_comment
+			from (select * from theater_info, person, code, casting 
+					where theater_info.theater_number = casting.theater_number
+					and person.person_name = casting.person.name
+				) where  theater_number = #{theater_number}
+	</select>
+	
+	<select id="getPersonTheater" parameterType="com.soldesk.spring.info.person.Person" resultType="com.soldesk.spring.info.person.Person">
+		select theater_number, theater_title, theater_photo
+			from (select * from theater_info, person, code, casting
+					where theater_info.theater_number = casting.theater_number
+					and person.person_name = casting.person.name
+				) where person_number = #{person_number}
+	</select>
+	<select id="getTheaterPerson" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.person.Person">
+		select tn, code, person_number, person_name
+			from (
+				select theater_number as tn, code, person_number, person_name
+					from 
+						(select t.theater_number, p.person_number, c.code, person_name from theater_info t, person p, code c, (select * from casting) g)
+				) where tn = #{theater_number}
+	</select>
+	
+</mapper>

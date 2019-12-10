@@ -15,22 +15,13 @@
 							
 		select * 
 			from 
-				(select rownum as rn, theater_photo, theater_title, thaeter_time, theater_age, theater_number 
+				(select rownum as rn, theater_photo, theater_title, theater_time, theater_age, theater_number 
 					from 
 						(select * 
 							from theater_info
 								where theater_title like '%'||#{search}||'%' order by theater_number desc
 						)
 				) where rn &gt;= #{start} and rn &lt;= #{end}					
-	</select>
-	
-	<select id="getTheaterPerson" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.person.Person">
-		select tn, code, person_number, person_name
-			from (
-				select theater_number as tn, code, person_number, person_name
-					from 
-						(select t.theater_number, p.person_number, c.code, person_name from theater_info t, person p, code c, (select * from casting) g)
-				) where tn = 1
 	</select>
 	
 	<select id="getTheaterGenre" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.genre.Genre">
@@ -52,18 +43,15 @@
 					where theater_number = #{theater_number}
 	</select>
 	
+	<select id="getTheaterDetail" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.theater.TheaterInfo"> 
+		select theater_title, theater_photo, theater_time, theater_age, theater_number
+			from theater_info where theater_number = #{theater_number}
+	</select>
 	
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 </mapper>

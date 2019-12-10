@@ -29,13 +29,12 @@ public class InfoController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "TheaterInfo.com/theater/Detail", method = RequestMethod.GET)
-	public String moveTheaterInfo(HttpServletRequest req, HttpServletResponse rep) {
-		mdao.memberLoginCheck(req, rep);
-		idao.getInfo(1, req, rep);
-		int p = Integer.parseInt(req.getParameter("p"));
-		idao.getInfo(p, req, rep);
-		req.setAttribute("content", "info/theater_info.jsp");
+	@RequestMapping(value = "TheaterInfo.com.theaterDetail.Basic", method = RequestMethod.GET)
+	public String getTheaterDetail(HttpServletRequest req, HttpServletResponse res) {
+		mdao.memberLoginCheck(req, res);
+		int t = Integer.parseInt(req.getParameter("theater_number"));
+		idao.getTheaterDetail(t, req, res);
+		req.setAttribute("content", "info/ViewDetail/TheaterDetail.jsp");
 		return "index";
 	}
 	
