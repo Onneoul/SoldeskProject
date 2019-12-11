@@ -64,13 +64,15 @@
 			<!-- 리뷰 -->
 				<table id="site_main_review_table">
 					<tr>
-						<td class="site_main_info_title">공지사항</td>
+						<td class="site_main_info_title"><img src="resources/img/notice.gif"></img></td>
 					</tr>
 					<!-- 몇개정도 보일지? -->
+					<c:forEach var="n" items="${notices }" >
 					<tr>
-						<td>공지내용</td>
-						<td>작성자</td>
+						<td>${n.notice_title }</td>
+						<td>${n.notice_id }</td>
 					</tr>
+					</c:forEach>
 				</table>
 			</td>
 		</tr>

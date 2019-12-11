@@ -9,7 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="sns_title">SNS 게시판</div>
+	<table class="page_title_table">
+		<tr>
+			<td class="page_title">게시판</td>			
+		</tr>
+	</table>
 	<form action="sns.index" method="post">
 		<table id="sns_head_area">
 			<tr>
@@ -27,7 +31,7 @@
 			<td>
 				<form action="sns.write" method="POST" name="snsWriteForm"
 					onsubmit="return snsWriteCheck();">
-					<input type="text" name="token" value="${token }">
+					<input type="hidden" name="token" value="${token }">
 					<table id="sns_snswrite_input">
 						<tr>
 							<td><textarea name="sns_text" maxlength="250"
@@ -37,11 +41,6 @@
 					</table>
 				</form>
 			</td>
-		</tr>
-	</table>
-	<table>
-		<tr align="right">
-			<td id="sns_all_count">게시글 목록 총 <span style="font-weight: 700;">${snsCount }</span>개 검색되었습니다.</td>
 		</tr>
 	</table>
 	<c:forEach var="s" items="${snss}">
@@ -56,13 +55,13 @@
 				</td>
 			</tr>
 			<tr class="sns_view_tr1">
-				<td class="sns_view_td1">작성일 &nbsp;&nbsp;&nbsp;<fmt:formatDate value="${s.sns_date }" type="both" pattern="MM/dd hh:mm" timeStyle="short" /></td>
+				<td class="sns_view_td1">작성일&nbsp;:&nbsp;<fmt:formatDate value="${s.sns_date }" type="both" pattern="MM/dd hh:mm" timeStyle="short" /></td>
 			</tr>
 			<tr>			
 				<td class="sns_view_td3">${s.sns_text }</td>
 			</tr>
 				<tr>
-					<td class="sns_reply_text">[댓글]</td>
+					<td class="sns_reply_re">[댓글]</td>
 				</tr>	
 			<c:forEach var="sr" items="${s.sns_replys }">
 				<tr>
@@ -96,5 +95,13 @@
 			</c:if>
 		</table>
 	</c:forEach>
+	<c:choose>
+	<c:when test="${curPage == 1}">
+		<a id="sns_change" href="sns.page.change?p=${curPage + 1}">더보기</a>
+	</c:when>
+	<c:when test="${curPage != 1 }">
+		
+	</c:when>
+	</c:choose>
 </body>
 </html>

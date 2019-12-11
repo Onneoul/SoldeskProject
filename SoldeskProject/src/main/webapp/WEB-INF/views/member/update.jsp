@@ -7,12 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<table class="page_title_table">
+		<tr>
+			<td class="page_title">회원정보수정</td>			
+		</tr>
+	</table>
 	<form action="member.update" method="post"
 		enctype="multipart/form-data" name="updateMemberForm"
 		onsubmit="return updateMemberCheck();">
-
-				<div id="info_text">회원정보수정</div>
-
 		<table id="update_table">
 			<tr>
 				<td>

@@ -33,6 +33,7 @@ public class SNSController {
 	// sns글 작성하기
 	@RequestMapping(value = "sns.write", method = RequestMethod.POST)
 	public String snsWrite(SNS s, HttpServletRequest req, HttpServletResponse res) {
+		TokenMaker.make(req, res);
 		mDAO.memberLoginCheck(req, res);
 		sDAO.snsWrite(s, req, res);
 		sDAO.snsView(1, req, res);
@@ -100,6 +101,23 @@ public class SNSController {
 			sDAO.snsUpdate(s, req, res);
 		}
 		sDAO.snsView(p, req, res);
+		req.setAttribute("content", "sns/sns.jsp");	
+		return "index";
+	}
+	
+	// 페이지 바꾸는 메소드
+	@RequestMapping(value = "sns.page.change", method = RequestMethod.GET)
+	public String snsPageChange(HttpServletRequest req, HttpServletResponse res) {
+		TokenMaker.make(req, res);
+		int p = Integer.parseInt(req.getParameter("p"));
+		mDAO.memberLoginCheck(req, res);
+		if (p == 1) {
+			sDAO.snsView(1, req, res);
+		} else {
+			for (int i = 1; i < p; i++) {
+				sDAO.snsView(i, req, res);
+			}		
+		}
 		req.setAttribute("content", "sns/sns.jsp");	
 		return "index";
 	}

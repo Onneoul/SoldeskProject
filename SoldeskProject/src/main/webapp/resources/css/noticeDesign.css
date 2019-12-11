@@ -134,3 +134,42 @@
 	font-weight: 700;
 	border-radius: 3px;	
 }
+
+#notice_paging {
+	padding-top: 20px;
+	border-top: 3px groove #0078FF;
+	border-spacing: 0px;
+}
+
+#noticeL {
+	margin-right : 10px;
+	font-size: 20px;
+	color: #0078FF;
+	font-weight: bolder;
+}
+
+#noticeR {
+	margin-left : 10px;
+	font-size: 20px;
+	color: #0078FF;
+	font-weight: bolder;
+}
+
+.notice_page_no {
+	font-size: 17px;
+	padding: 4px 8px;
+	background-color: #0078FF;
+	color: white;
+	margin-left: 5px;
+	border-radius: 2px;
+}
+
+#notice_page_img {
+	position: relative;
+	top: 0px;
+	left: -400px;
+	border-bottom: 3px solid #0078FF;
+	width: 100px;
+	padding-bottom: 3px;
+	margin-bottom: 15px;
+}

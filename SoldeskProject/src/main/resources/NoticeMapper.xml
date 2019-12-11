@@ -13,7 +13,7 @@
 				select *
 				from notice, Member 
 				where notice_id = member_id and notice_title like '%'||#{search}||'%'
-			order by notice_number
+			order by notice_number desc
 			)
 		)
 		where rn &gt;= #{start} and rn &lt;= #{end}
@@ -25,4 +25,5 @@
 		insert into notice
 		values(notice_seq.nextval, #{notice_title}, #{notice_text}, #{notice_id})
 	</insert>
+	
 </mapper>

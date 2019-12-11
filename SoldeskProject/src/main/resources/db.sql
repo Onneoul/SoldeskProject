@@ -121,3 +121,5 @@ create sequence notice_seq;
 select * from notice;
 
 drop table notice;
+
+LIMIT 0, 5;

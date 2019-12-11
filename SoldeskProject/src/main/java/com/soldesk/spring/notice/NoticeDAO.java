@@ -65,6 +65,7 @@ public class NoticeDAO {
 		}
 	}
 
+
 	// Notice 작성하기
 	public void noticeWrite(Notice n, HttpServletRequest req, HttpServletResponse res) {
 		try {
@@ -75,6 +76,7 @@ public class NoticeDAO {
 			if (successToken != null && token.equals(successToken)) {
 				return;
 			}
+			
 			System.out.println("TOKEN 끝");
 			Member m = (Member) req.getSession().getAttribute("loginMember");
 			n.setNotice_id(m.getMember_id());

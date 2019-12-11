@@ -8,12 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<table class="page_title_table">
+		<tr>
+			<td class="page_title">회원가입</td>			
+		</tr>
+	</table>
 	<form action="member.join" method="post" enctype="multipart/form-data"
 				name="memberJoinForm" onsubmit="return memberJoinCheck();">
 		<table id="join_table">
-			<tr>
-				<td id="join_title">회원가입</td>
-			</tr>
 			<tr>
 				<td>아이디 입력</td>
 			</tr>

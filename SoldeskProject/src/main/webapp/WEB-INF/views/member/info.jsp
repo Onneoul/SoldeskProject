@@ -7,7 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="info_text">회원정보</div>
+	<table class="page_title_table">
+		<tr>
+			<td class="page_title">회원정보</td>			
+		</tr>
+	</table>
 				<table id="info_table">
 					<tr>
 						<td align="center" id="info_photxt">[프로필 사진]</td>

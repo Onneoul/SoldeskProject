@@ -49,3 +49,10 @@ function memberIdCheck() {
 		});
 	});
 }
+
+function snsBottomButton() {
+	
+	$("#sns_more_btn").click(function () {
+		
+	});
+}

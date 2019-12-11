@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>공지사항</div>
+	<div id="notice_page_img"><img src="resources/img/notice.gif"></div>
 	<table>
 		<tr>
 			<td>
@@ -25,6 +25,19 @@
 						<td class="notice_date">${n.notice_id }</td>						
 					</tr>
 				</c:forEach>
+				<tr>
+					<td id="notice_paging" colspan="3" align="center">
+						<c:if test="${curPage != 1 }">
+							<a id="noticeL" href="notice.page.change?p=${curPage - 1 }">&lt;</a>
+						</c:if>
+						<c:forEach var="no" begin="1" end="5" step="1">
+							<a class="notice_page_no" href="notice.page.change?p=${no }">${no }</a>
+						</c:forEach>
+						<c:if test="${curPage != pageCount }">
+							<a id="noticeR" href="notice.page.change?p=${curPage + 1 }">&gt;</a>
+						</c:if>
+					</td>
+				</tr>
 				<c:if test="${'admin' == sessionScope.loginMember.member_id }">
 					<tr>
 						<td colspan="3" id="notice_write_btn">

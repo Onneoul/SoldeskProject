@@ -7,12 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<table class="page_title_table">
+		<tr>
+			<td class="page_title">로그인</td>			
+		</tr>
+	</table>
 	<form action="member.login" method="post" name="memberLoginForm"
 		onsubmit="return MemberLoginCheck();">
 		<table id="loginform_area">
-			<tr>
-				<td id="loginform_text">로그인</td>
-			</tr>
 			<tr>
 				<td class="loginform_input"><input name="member_id" placeholder="아이디 입력"></td>
 			</tr>
