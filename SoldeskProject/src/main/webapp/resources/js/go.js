@@ -2,6 +2,14 @@ function goHome() {
 	location.href = "index.do";
 }
 
+function goNotice() {
+	location.href = "notice.view"
+}
+
+function goNoticeWrite() {
+	location.href = "notice.write.go";
+}
+
 function goMemberJoin() {
 	location.href = "member.join.go";
 }
@@ -56,3 +64,5 @@ function snsUpdate(n, t, p) {
 		location.href = "sns.update?sns_number=" + n + "&sns_text=" + t + "&p=" + p;
 	}
 }
+
+

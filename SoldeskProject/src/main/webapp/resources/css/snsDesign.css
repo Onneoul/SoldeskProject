@@ -74,6 +74,11 @@
 	border-right: 2px solid #EBFBFF;
 }
 
+#info_photxt {
+	font-weight: 700;
+	padding-bottom: 10px;
+}
+
 .sns_view_tr1 {
 	margin: 0;
 	font-size: 20px;

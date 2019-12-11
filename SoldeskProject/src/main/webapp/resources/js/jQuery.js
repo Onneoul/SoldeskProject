@@ -1,14 +1,28 @@
 $(function() {
 	memberAddressSearch();
 	memberIdCheck();
+	updateAddressSearch();
 });
 
+// 회원가입 주소검색
 function memberAddressSearch() {
 	$("#member_address_btn").click(function () {
 		new daum.Postcode({
 			oncomplete : function(data) {
 				$("#member_addr3Input").val(data.zonecode);
 				$("#member_addr1Input").val(data.roadAddress);
+			}
+		}).open();
+	});
+}
+
+// 정보수정 주소검색
+function updateAddressSearch() {
+	$("#update_address_btn").click(function () {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				$("#update_addr3Input").val(data.zonecode);
+				$("#update_addr1Input").val(data.roadAddress);
 			}
 		}).open();
 	});

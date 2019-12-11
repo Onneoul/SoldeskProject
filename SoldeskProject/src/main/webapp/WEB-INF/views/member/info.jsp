@@ -8,12 +8,9 @@
 </head>
 <body>
 	<div id="info_text">회원정보</div>
-	<table id="info_area">
-		<tr>
-			<td>
 				<table id="info_table">
 					<tr>
-						<td align="center">프로필 사진</td>
+						<td align="center" id="info_photxt">[프로필 사진]</td>
 					</tr>
 					<tr>
 						<td>
@@ -21,27 +18,31 @@
 							id="updateMemberPhoto" width="100px" height="120px"></td>
 					</tr>
 				</table>
+	<table id="info_area">
+		<tr>
+			<td>
 			</td>
 			<td>
-				<table>
+				<table id="info_main">
 					<tr>
-						<td>회원 ID</td>
-						<td>${sessionScope.loginMember.member_id }</td>
+						<td class="info_txt1">회원 ID</td>
+						<td class="info_txt2">${sessionScope.loginMember.member_id }</td>
 					</tr>
 					<tr>
-						<td>이름</td>
-						<td>${sessionScope.loginMember.member_name }</td>
+						<td class="info_txt1">이 &nbsp;&nbsp;&nbsp;&nbsp;름</td>
+						<td class="info_txt2">${sessionScope.loginMember.member_name }</td>
 					</tr>
 					<tr>
-						<td>주소</td>
-						<td>${sessionScope.loginMember.member_addr }</td>
+						<td class="info_txt1">주 &nbsp;&nbsp;&nbsp;&nbsp;소</td>
+						<td class="info_txt2">${sessionScope.loginMember.member_addr }</td>
 					</tr>
 				</table>
 			</td>
+		</tr>
 	</table>
 
-<button onclick="goMemberUpdate();">수정하기</button>
-<button onclick="goMemberDelete();">탈퇴하기</button>
+<button class="info_btn" onclick="goMemberUpdate();">수정하기</button>
+<button class="info_btn" onclick="goMemberDelete();">탈퇴하기</button>
 
 </body>
 </html>

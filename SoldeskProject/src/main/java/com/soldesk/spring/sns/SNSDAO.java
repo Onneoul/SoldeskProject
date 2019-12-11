@@ -35,7 +35,6 @@ public class SNSDAO {
 
 		SNSSelector sSel = new SNSSelector("", null, null);
 		allSNSCount = ss.getMapper(SNSMapper.class).getSNSCount(sSel);
-		System.out.println(allSNSCount);
 	}
 	
 	// SNS글쓰기 기능
@@ -56,7 +55,6 @@ public class SNSDAO {
 
 			if (ss.getMapper(SNSMapper.class).snsWrite(s) == 1) {
 				req.setAttribute("result", "등록완료");
-				System.out.println("성공");
 				allSNSCount++;
 				req.getSession().setAttribute("successToken", token);
 			} else {
@@ -72,7 +70,7 @@ public class SNSDAO {
 	public void snsView(int pageNo, HttpServletRequest req, HttpServletResponse res) {
 		
 		try {
-		int count = so.getSnsCountPerPage();
+		int count = so.getCountPerPage();
 		
 		int start = (pageNo - 1) * count + 1;
 		int end = start + (count - 1);
@@ -100,7 +98,6 @@ public class SNSDAO {
 		req.setAttribute("curPage", pageNo);
 		int pageCount = (int) Math.ceil(snsCount/ (double)count);
 		req.setAttribute("pageCount", pageCount);
-		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

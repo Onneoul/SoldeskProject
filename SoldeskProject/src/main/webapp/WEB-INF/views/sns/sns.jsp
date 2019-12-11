@@ -27,7 +27,7 @@
 			<td>
 				<form action="sns.write" method="POST" name="snsWriteForm"
 					onsubmit="return snsWriteCheck();">
-					<input type="hidden" name="token" value="${token }">
+					<input type="text" name="token" value="${token }">
 					<table id="sns_snswrite_input">
 						<tr>
 							<td><textarea name="sns_text" maxlength="250"
@@ -41,7 +41,7 @@
 	</table>
 	<table>
 		<tr align="right">
-			<td id="sns_all_count">게시글 목록 총 	개 검색되었습니다.</td>
+			<td id="sns_all_count">게시글 목록 총 <span style="font-weight: 700;">${snsCount }</span>개 검색되었습니다.</td>
 		</tr>
 	</table>
 	<c:forEach var="s" items="${snss}">
@@ -50,7 +50,7 @@
 				<td class="sns_view_td2">작성자 &nbsp;&nbsp;&nbsp;<span class="sns_view_re">${s.sns_user }</span></td>
 				<td class="sns_view_re">
 				<c:if test="${s.sns_user == sessionScope.loginMember.member_id }">
-					<span onclick="snsUpdate(${s.sns_number}, ${s.sns_text}, ${curPage });">수정</span>&nbsp;&nbsp;&nbsp;
+					<span onclick="snsUpdate(${s.sns_number}, '${s.sns_text}', ${curPage });">수정</span>&nbsp;&nbsp;&nbsp;
 					<span onclick="snsDelete(${s.sns_number });">삭제</span>
 				</c:if>
 				</td>
@@ -85,11 +85,10 @@
 						<form action="sns.reply.write"
 							onsubmit="return snsReplyWriteCheck(this);">
 							<span class="SNSReply_id">${sessionScope.loginMember.member_id }</span>
-							<input id="SNSComment_me" type="hidden" name="token"
-								value="${token }"> <input type="hidden"
-								name="reply_number_num" value="${s.sns_number }"> <input
-								type="hidden" name="p" value="${curPage }"> <input
-								class="SNSReply_txt" name="reply_text" maxlength="800">
+							<input id="SNSComment_me" type="hidden" name="token" value="${token }"> 
+								<input type="hidden"name="reply_number_num" value="${s.sns_number }"> 
+								<input type="hidden" name="p" value="${curPage }"> 
+								<input class="SNSReply_txt" name="reply_text" maxlength="800">
 							<button class="SNSComment_btn">댓글쓰기</button>
 						</form>
 					</td>

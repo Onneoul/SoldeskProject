@@ -8,11 +8,15 @@ CREATE TABLE notice
 
 CREATE TABLE theater_info (
     theater_number    NUMBER(8)       PRIMARY KEY,
-    theater_title     VARCHAR2(20)    NOT NULL, 
+    theater_title     VARCHAR2(80)    NOT NULL, 
     theater_photo     VARCHAR2(40)    NOT NULL, 
-    thaeter_time      NUMBER(3)       NOT NULL, 
+    theater_time      NUMBER(3)       NOT NULL, 
     theater_age       NUMBER(3)       NOT NULL
 );
+
+drop table theater_info;
+
+select * from theater_info;
 
 CREATE TABLE person
 (
@@ -47,16 +51,19 @@ CREATE TABLE theater_stage
 
 CREATE TABLE date_time
 (
-    theater_number    NUMBER(10)    PRIMARY KEY, 
     theater_date      DATE          NOT NULL, 
-    date_number       NUMBER(6)     NOT NULL
+    date_number       NUMBER(6)     PRIMARY KEY
 );
+
+drop table date_time;
 
 CREATE TABLE theater_date_time
 (
     theater_number    NUMBER(8)    NOT NULL, 
-    theater_date      DATE         NOT NULL
+    date_number      NUMBER(6)         NOT NULL
 );
+
+drop table theater_date_time;
 
 CREATE TABLE organization
 (
@@ -90,11 +97,12 @@ CREATE TABLE code (
 );
 
 create sequence theater_seq;
+drop sequence theater_seq;
 create sequence person_seq;
 create sequence date_seq;
 create sequence stage_seq;
 create sequence group_seq;
-insert into theater_info values (theater_seq.nextval, '고도를 기다리', '1', 120, 15);
+insert into theater_info values (theater_seq.nextval, '고도를 기다리며', '1', 120, 15);
 insert into theater_info values (theater_seq.nextval, '뽀로로', '1', 90, 7);
 insert into theater_info values (theater_seq.nextval, '가나다', '1', 110, 15);
 insert into person values (person_seq.nextval, 'Kim', sysdate, '청주', '1', 01);
@@ -103,6 +111,11 @@ insert into person values (person_seq.nextval, 'Park', sysdate, '양주', '1', 0
 insert into person values (person_seq.nextval, 'Hong', sysdate, '파주', '1', 02);
 insert into code values ('person','감독',01);
 insert into code values ('person', '배우', 02);
+insert into date_time values (sysdate, date_seq.nextval);
+insert into THEATER_DATE_TIME values(2, 4);
+
+select * from theater_date_time;
+select * from date_time;
 
 select * from code;
 delete code;

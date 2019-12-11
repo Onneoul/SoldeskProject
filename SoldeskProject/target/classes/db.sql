@@ -8,7 +8,10 @@ CREATE TABLE Member
     member_photo     VARCHAR2(50)    NOT NULL, 
     member_level     NUMBER(1)       NOT NULL
 );
-                                                               
+                                                      
+alter table notice modify(notice_title varchar2(200));
+
+
 insert into Member values(Member_seq.nextval, 'test2', '123', '123', '1', '1', 1);
 insert into SNS values(SNS_seq.nextval, '123', '1', sysdate);
 create sequence Member_seq;
@@ -100,3 +103,21 @@ select count(*) from SNS s, member m
 where s.member_id = m.member_id;
 
 select * from sns_reply where reply_number = #{sns_number};
+
+
+create table notice (
+   notice_number    NUMBER(10)        primary key, 
+    notice_title     VARCHAR2(20)      NOT NULL, 
+    notice_text      VARCHAR2(1500)    NOT NULL, 
+    notice_id        VARCHAR2(10)      NOT NULL, 
+   CONSTRAINT FK_Notice_id_Member_id FOREIGN KEY (notice_id)
+        REFERENCES Member (member_id) on delete cascade
+);
+
+insert into notice values(notice_seq.nextval, '제목', '내용', '123');
+
+create sequence notice_seq;
+
+select * from notice;
+
+drop table notice;

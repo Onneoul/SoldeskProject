@@ -81,6 +81,12 @@
 	font-weight: 700;
 }
 
+#info_photxt {
+	font-size: 17px;
+	font-weight: 800;
+	color: #1E90FF;
+}
+
 #info_text {
 	font-size: 30px;
 	font-weight: 700;
@@ -88,5 +94,124 @@
 }
 
 #info_area {
-	border: 2px solid #46B8FF;
+	height: 250px;
+}
+
+#info_main tr {
+
+}
+
+.info_txt1 {
+	text-align: center;
+	font-size: 22px;
+	font-weight: 600;
+	background-color: #32A4FF;
+	width: 150px;
+	color: white;
+}
+
+.info_txt2 {
+	width: 250px;
+	text-align: left;
+	padding-left: 15px;
+	font-size: 20px;
+	border-bottom: 2px solid #32A4FF;
+	padding-top: 10px;
+	height: 40px;
+}
+
+.info_btn {
+	background: #0078FF;
+	font-size: 20px;
+	color: white;
+	border: none;
+	width: 120px;
+	height: 45px;
+	font-weight: 700;
+	border-radius: 2px;
+	margin: 30px;
+}
+
+#update_table {
+	margin-top: 30px;
+}
+
+#update_photo {
+	text-align: center;
+	margin-right: 30px;
+}
+
+#update_photxt {
+	font-size: 17px;
+	font-weight: 800;
+	color: #1E90FF;
+}
+
+#update_photo img{
+	width: 150px;
+	height: 180px;
+}
+
+#update_photo input {
+	width: 90px;
+}
+
+#update_area {
+	
+}
+
+.update_txt {
+	font-size: 25px;
+	font-weight: 600;
+	padding: 8px;
+	color: #1E90FF;
+	padding-right: 25px;
+}
+
+.update_input1 input {
+	border: none;
+	outline: none;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.update_input2 input {
+	border: none;
+	border-bottom: 2px solid #3CAEFF;
+	font-size: 16px;
+	font-weight: 300;
+	padding-left: 5px;
+}
+
+.update_input3 input {
+	border: none;
+	border-bottom: 2px solid #3CAEFF;
+	font-size: 16px;
+	padding: 5px 3px;
+	padding-left: 5px;
+}
+
+#update_btn button {
+	background: #0078FF;
+	font-size: 20px;
+	color: white;
+	border: none;
+	width: 120px;
+	height: 45px;
+	font-weight: 700;
+	border-radius: 2px;
+	margin-top: 50px;
+}
+
+#update_address_btn {
+	position: absolute;
+	top : 525px;
+	right : 450px;
+	background: #289AFF;
+	color: white;
+	border: none;
+	width: 90px;
+	height: 35px;
+	font-weight: 700;
+	border-radius: 3px;
 }

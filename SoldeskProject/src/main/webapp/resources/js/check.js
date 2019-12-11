@@ -65,3 +65,19 @@ function snsReplyWriteCheck() {
 	}
 	return true;
 }
+
+function noticeWriteCheck() {
+	var titleInput = document.noticeWriteForm.notice_title;
+	var textInput = document.noticeWriteForm.notice_text;
+	
+	if (isEmpty(titleInput)) {
+		alert("제목을 입력하세요.");
+		titleInput.focus();
+		return false;
+	} else if (isEmpty(textInput)) {
+		alert("내용을 입력하세요.");
+		textInput.focus();
+		return false;
+	}
+	return true;
+}

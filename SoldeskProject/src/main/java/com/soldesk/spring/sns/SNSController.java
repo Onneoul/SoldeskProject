@@ -24,6 +24,7 @@ public class SNSController {
 	@RequestMapping(value = "sns.view", method = RequestMethod.GET)
 	public String snsView(HttpServletRequest req, HttpServletResponse res) {
 		mDAO.memberLoginCheck(req, res);
+		SiteOption.clesrSearch(req, res);
 		sDAO.snsView(1, req, res);
 		req.setAttribute("content", "sns/sns.jsp");
 		return "index";

@@ -1,5 +1,8 @@
 package com.soldesk.spring.notice;
 
-public class NoticeMapper {
+import java.util.List;
 
+public interface NoticeMapper {
+	public abstract List<Notice> noticeView(NoticeSelector nSel);
+	public abstract int noticeWrite(Notice n);
 }
