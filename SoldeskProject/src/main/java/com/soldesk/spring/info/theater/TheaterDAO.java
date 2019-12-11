@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import com.soldesk.spring.SiteOption;
 import com.soldesk.spring.info.date_time.Date_time;
+import com.soldesk.spring.info.person.Person;
+import com.soldesk.spring.info.person.PersonMapper;
 
 @Service
 public class TheaterDAO {
@@ -34,7 +36,7 @@ public class TheaterDAO {
 	@Autowired
     private SiteOption so;
 	
-	public void searchNotice(TheaterSelector ts, HttpServletRequest req, HttpServletResponse rep) {
+	public void searchTheater(TheaterSelector ts, HttpServletRequest req, HttpServletResponse rep) {
 		req.getSession().setAttribute("search", ts);
 	}
 	
@@ -74,7 +76,7 @@ public class TheaterDAO {
 			List<TheaterInfo> lt = ss.getMapper(TheaterMapper.class).getTheater(search);
 			for (TheaterInfo ti : lt) {
 				//ti.setTheater_genre(ss.getMapper(TheaterMapper.class).getTheaterGenre(ti));
-				ti.setTheater_person(ss.getMapper(TheaterMapper.class).getTheaterPerson(ti));
+				ti.setTheater_person(ss.getMapper(PersonMapper.class).getTheaterPerson(ti));
 				/*ti.setTheater_date_time(ss.getMapper(TheaterMapper.class).getTheaterDatetime(ti)); // date_time 리스트 생성
 				for (Date_time dt : ti.getTheater_date_time()) { // For 문 돌려서 공연 시작 날짜와 끝나는 날짜 구하기
 					dl.add(sdf.format(dt.getTheater_date())); // Date_time의 Theater_date를 String List dl에 추가
@@ -97,6 +99,24 @@ public class TheaterDAO {
     	} catch (Exception e) {
     		e.printStackTrace();
     	}
+    }
+   
+    public void getTheaterDetail(int t, HttpServletRequest req, HttpServletResponse res) {
+    	
+    	try {
+
+    		t = Integer.parseInt(req.getParameter("theater_number"));
+    		TheaterInfo LT = new TheaterInfo(); 
+    		LT.setTheater_number(new BigDecimal(t));
+    		
+    		TheaterInfo TI = ss.getMapper(TheaterMapper.class).getTheaterDetail(LT);
+    		
+    		req.setAttribute("theater", TI);
+    		
+		} catch (Exception e) {
+			req.setAttribute("result", "조회 실패");
+			e.printStackTrace();
+		}	
     }
     
 }

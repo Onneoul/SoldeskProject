@@ -12,11 +12,10 @@ public interface TheaterMapper {
 	public abstract Integer theaterCount(TheaterSelector ts);
 	public abstract int theaterWrite(TheaterInfo ti);
 	public abstract List<TheaterInfo> getTheater(TheaterSelector ts);
-	public abstract List<Person> getTheaterPerson(TheaterInfo ti);
 	public abstract List<Organization> getTheaterOrganization(TheaterInfo ti);
 	public abstract List<Stage> getTheaterStage(TheaterInfo ti);
 	public abstract List<Genre> getTheaterGenre(TheaterInfo ti);
 	public abstract List<Date_time> getTheaterDatetime(TheaterInfo ti);
-	
+	public abstract TheaterInfo getTheaterDetail(TheaterInfo ti);
 	
 }

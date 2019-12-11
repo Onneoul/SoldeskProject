@@ -5,6 +5,10 @@ body {
 	overflow-y: scroll;
 }
 
+a {
+	text-decoration: none;
+}
+
 button {
 	cursor: pointer;
 }
