@@ -19,7 +19,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeDAO nDAO;
 
-	// Notice 메인뷰
+	// Notice 메인뷰1
 	@RequestMapping(value = "notice.view", method = RequestMethod.GET)
 	public String noticeView(HttpServletRequest req, HttpServletResponse res) {
 		mDAO.memberLoginCheck(req, res);
