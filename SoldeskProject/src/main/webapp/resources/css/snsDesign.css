@@ -12,7 +12,7 @@
 
 #sns_index_text input {
 	width: 250px;
-	height: 27px;
+	height: 30px;
 	padding-left: 5px;
 	border-radius: 5px 0px 0px 5px;
 	border: 2px solid #46B8FF;
@@ -46,7 +46,7 @@
 #sns_snswrite_input textarea {
 	padding: 10px;
 	width: 600px;
-	height: 103px;
+	height: 127px;
 	border-radius: 5px 0px 0px 5px;
 	font-size: 15px;
 	border: 2px solid #6991E1;

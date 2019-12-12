@@ -2,6 +2,7 @@ $(function() {
 	memberAddressSearch();
 	memberIdCheck();
 	updateAddressSearch();
+	noticeTitleClick();
 });
 
 // 회원가입 주소검색
@@ -50,9 +51,10 @@ function memberIdCheck() {
 	});
 }
 
-function snsBottomButton() {
+function noticeTitleClick() {
 	
-	$("#sns_more_btn").click(function () {
+	$(".notice_title").click(function () {
 		
 	});
 }
+

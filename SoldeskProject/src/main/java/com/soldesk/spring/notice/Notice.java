@@ -7,17 +7,20 @@ public class Notice {
 	private String notice_title;
 	private String notice_text;
 	private String notice_id;
+	private BigDecimal notice_category;
 
 	public Notice() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Notice(BigDecimal notice_number, String notice_title, String notice_text, String notice_id) {
+	public Notice(BigDecimal notice_number, String notice_title, String notice_text, String notice_id,
+			BigDecimal notice_category) {
 		super();
 		this.notice_number = notice_number;
 		this.notice_title = notice_title;
 		this.notice_text = notice_text;
 		this.notice_id = notice_id;
+		this.notice_category = notice_category;
 	}
 
 	public BigDecimal getNotice_number() {
@@ -50,6 +53,14 @@ public class Notice {
 
 	public void setNotice_id(String notice_id) {
 		this.notice_id = notice_id;
+	}
+
+	public BigDecimal getNotice_category() {
+		return notice_category;
+	}
+
+	public void setNotice_category(BigDecimal notice_category) {
+		this.notice_category = notice_category;
 	}
 
 	

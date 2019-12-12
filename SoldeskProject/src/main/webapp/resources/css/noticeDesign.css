@@ -143,23 +143,22 @@
 
 #noticeL {
 	margin-right : 10px;
-	font-size: 20px;
+	font-size: 12px;
 	color: #0078FF;
-	font-weight: bolder;
 }
 
 #noticeR {
 	margin-left : 10px;
-	font-size: 20px;
+	font-size: 12px;
 	color: #0078FF;
-	font-weight: bolder;
+	float: right;
 }
 
 .notice_page_no {
 	font-size: 17px;
+	font-weight: 700;
 	padding: 4px 8px;
-	background-color: #0078FF;
-	color: white;
+	color: #0078FF;
 	margin-left: 5px;
 	border-radius: 2px;
 }
@@ -172,4 +171,15 @@
 	width: 100px;
 	padding-bottom: 3px;
 	margin-bottom: 15px;
+}
+
+#notice_content_img img {
+	width: 140px;
+	margin-bottom: 25px;
+}
+
+.notice_title:hover {
+	background-color: #0078FF77;
+	color: white;
+	cursor: pointer;
 }

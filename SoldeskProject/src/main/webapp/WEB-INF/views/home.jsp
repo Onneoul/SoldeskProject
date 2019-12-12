@@ -9,10 +9,11 @@
 <body>
 	<table id="site_main">
 		<tr>
-			<td id="site_main_img"><img src="resources/img/Penguins.jpg"></img>
+			<td id="site_main_img" colspan="2">
+				<img src="resources/img/Penguins.jpg"></img>
 			</td>
 		</tr>
-		<tr>
+		<tr align="center">
 			<td id="site_main_info">
 				<table class="site_main_info_table">
 					<tr>
@@ -22,8 +23,9 @@
 						<td>
 							<table>
 								<tr>
-									<td class="site_main_info_img"><img
-										src="resources/img/Penguins.jpg"></img></td>
+									<td class="site_main_info_img">
+										<img src="resources/img/Penguins.jpg"></img>
+									</td>
 								</tr>
 								<tr>
 									<td>제목입력</td>
@@ -61,16 +63,21 @@
 						</td>
 					</tr>
 				</table>
+			</td>
 			<!-- 리뷰 -->
+			<td>
 				<table id="site_main_review_table">
 					<tr>
-						<td class="site_main_info_title"><img src="resources/img/notice.gif"></img></td>
+						<td class="site_main_info_title">
+							<img src="resources/img/notice.gif"></img>
+							<a id="site_main_review_more" href="notice.view">+더보기</a>
+						</td>
 					</tr>
 					<!-- 몇개정도 보일지? -->
 					<c:forEach var="n" items="${notices }" >
 					<tr>
-						<td>${n.notice_title }</td>
-						<td>${n.notice_id }</td>
+						<td class="site_main_review_title"><a onclick="goNoticeContent(${n.notice_number});">${n.notice_title }</a></td>
+						<td class="site_main_review_id">${n.notice_id }</td>
 					</tr>
 					</c:forEach>
 				</table>

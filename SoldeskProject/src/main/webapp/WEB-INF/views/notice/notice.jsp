@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="notice_page_img"><img src="resources/img/notice.gif"></div>
+	<div id="notice_content_img"><img src="resources/img/notice.gif"></div>
 	<table>
 		<tr>
 			<td>
@@ -21,20 +21,18 @@
 				<c:forEach var="n" items="${notices }">
 					<tr class="notice_tr">
 						<td class="notice_no">${n.notice_number }</td>
-						<td class="notice_title">${n.notice_title }</td>
+						<td class="notice_title" onclick="goNoticeContent(${n.notice_number});">${n.notice_title }</td>
 						<td class="notice_date">${n.notice_id }</td>						
 					</tr>
 				</c:forEach>
 				<tr>
-					<td id="notice_paging" colspan="3" align="center">
+					<td id="notice_paging" colspan="3">
 						<c:if test="${curPage != 1 }">
-							<a id="noticeL" href="notice.page.change?p=${curPage - 1 }">&lt;</a>
+							<a id="noticeL" href="notice.page.change?p=${curPage - 1 }">이전페이지로</a>
 						</c:if>
-						<c:forEach var="no" begin="1" end="5" step="1">
-							<a class="notice_page_no" href="notice.page.change?p=${no }">${no }</a>
-						</c:forEach>
+							<a class="notice_page_no" href="notice.page.change?p=${curPage }">${curPage }Page</a>
 						<c:if test="${curPage != pageCount }">
-							<a id="noticeR" href="notice.page.change?p=${curPage + 1 }">&gt;</a>
+							<a id="noticeR" href="notice.page.change?p=${curPage + 1 }">다음페이지로</a>
 						</c:if>
 					</td>
 				</tr>

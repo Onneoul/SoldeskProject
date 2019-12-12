@@ -10,6 +10,14 @@ function goNoticeWrite() {
 	location.href = "notice.write.go";
 }
 
+function goNoticeContent(n) {
+	location.href = "notice.content?notice_number=" + n;
+}
+
+function goNoticeUpdate(n) {
+	location.href = "notice.update.go?notice_number=" + n;
+}
+
 function goMemberJoin() {
 	location.href = "member.join.go";
 }

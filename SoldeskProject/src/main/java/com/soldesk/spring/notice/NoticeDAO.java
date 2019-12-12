@@ -69,35 +69,52 @@ public class NoticeDAO {
 	// Notice 작성하기
 	public void noticeWrite(Notice n, HttpServletRequest req, HttpServletResponse res) {
 		try {
-			System.out.println("노티스 라이트 시작");
 			String token = req.getParameter("token");
 			String successToken = (String) req.getSession().getAttribute("successToken");
 
 			if (successToken != null && token.equals(successToken)) {
 				return;
 			}
-			
-			System.out.println("TOKEN 끝");
 			Member m = (Member) req.getSession().getAttribute("loginMember");
 			n.setNotice_id(m.getMember_id());
 			String notice_text = n.getNotice_text();
 			n.setNotice_text(notice_text.replace("\r\n", "<br>"));
-			System.out.println("Set끝");
 			
 			if (ss.getMapper(NoticeMapper.class).noticeWrite(n) == 1) {
 				req.setAttribute("result", "등록완료");
-				System.out.println("작성 성공");
 				req.getSession().setAttribute("successToken", token);
 			} else {
 				req.setAttribute("result", "등록실패");
-				System.out.println("실패");
-			}
-			
+			}			
 		} catch (Exception e) {
 			e.printStackTrace();
 			req.setAttribute("result", "등록실패");
-			System.out.println("db 실패");
 		}
 	}
 	
-}
+	// notice제목 클릭시 내용보기
+	public void noticeContent(int t, HttpServletRequest req, HttpServletResponse res) {
+			
+			Notice n = new Notice();
+			n.setNotice_number(new BigDecimal(t));
+			
+			req.setAttribute("noticeContent" ,ss.getMapper(NoticeMapper.class).noticeContent(n));
+		}
+	
+	// notice업데이트(수정)
+	public void noticeUpdate(Notice n, HttpServletRequest req, HttpServletResponse res) {
+		try {			
+			
+			if (ss.getMapper(NoticeMapper.class).noticeUpdate(n) == 1) {
+				req.setAttribute("result", "글수정성공");
+			} else {
+				req.setAttribute("result", "글수정실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "글수정실패");
+		}
+	}
+	}
+	
+

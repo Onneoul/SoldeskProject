@@ -50,12 +50,49 @@ public class NoticeController {
 	
 	// 페이지 바꾸는 메소드
 	@RequestMapping(value = "notice.page.change", method = RequestMethod.GET)
-	public String snsPageChange(HttpServletRequest req, HttpServletResponse res) {
+	public String noticePageChange(HttpServletRequest req, HttpServletResponse res) {
 		TokenMaker.make(req, res);
 		int p = Integer.parseInt(req.getParameter("p"));
 		mDAO.memberLoginCheck(req, res);
 		nDAO.noticeView(p, req, res);
 		req.setAttribute("content", "notice/notice.jsp");	
+		return "index";
+	}
+	
+	// notice 내용 이동
+	@RequestMapping(value = "notice.content", method = RequestMethod.GET)
+	public String noticeContent(HttpServletRequest req, HttpServletResponse res) {
+		mDAO.memberLoginCheck(req, res);
+		int t = Integer.parseInt(req.getParameter("notice_number"));
+		nDAO.noticeContent(t, req, res);
+		req.setAttribute("content", "notice/content.jsp");
+		return "index";
+	}
+	
+	// notice 수정페이지 이동
+		@RequestMapping(value = "notice.update.go", method = RequestMethod.GET)
+		public String noticeContentGo(HttpServletRequest req, HttpServletResponse res) {
+			TokenMaker.make(req, res);
+			int t = Integer.parseInt(req.getParameter("notice_number"));
+			if (mDAO.memberLoginCheck(req, res)) {
+				nDAO.noticeContent(t, req, res);
+				req.setAttribute("content", "notice/update.jsp");
+			} else {
+				req.setAttribute("content", "home.jsp");
+			}
+			return "index";
+		}
+	
+	// Notice 업데이트(수정)
+	@RequestMapping(value = "notice.update", method = RequestMethod.POST)
+	public String noticeUpdate(Notice n, HttpServletRequest req, HttpServletResponse res) {
+		if (mDAO.memberLoginCheck(req, res)) {
+			nDAO.noticeUpdate(n, req, res);
+			nDAO.noticeView(1, req, res);
+			req.setAttribute("content", "notice/notice.jsp");
+		} else {
+			req.setAttribute("content", "home.jsp");
+		}
 		return "index";
 	}
 	

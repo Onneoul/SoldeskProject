@@ -76,7 +76,6 @@ public class MemberDAO {
 	public void memberLogin(Member m, HttpServletRequest req, HttpServletResponse res) {
 		try {
 			Member dbMember = ss.getMapper(MemberMapper.class).getMemberByID(m);
-			System.out.println(dbMember);
 			if (dbMember != null) {
 				if (m.getMember_pw().equals(dbMember.getMember_pw())) {
 					req.getSession().setAttribute("loginMember", dbMember);

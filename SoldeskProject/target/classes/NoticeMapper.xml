@@ -23,7 +23,30 @@
 	<insert id="noticeWrite"
 		parameterType="com.soldesk.spring.notice.Notice">
 		insert into notice
-		values(notice_seq.nextval, #{notice_title}, #{notice_text}, #{notice_id})
+		values(notice_seq.nextval, #{notice_title}, #{notice_text}, #{notice_id}, #{notice_category})
 	</insert>
 	
+	<!-- Notice제목 클릭시 내용이동 -->
+	<select id="noticeContent" 
+		resultType="com.soldesk.spring.notice.Notice"
+		parameterType="com.soldesk.spring.notice.Notice">
+		select * from notice where notice_number = #{notice_number}
+	</select>
+	
+	<!-- Notice 업데이트 -->
+	<update id="noticeUpdate"
+		parameterType="com.soldesk.spring.notice.Notice">
+		update notice
+		set notice_title = #{notice_title}, notice_text = #{notice_text}
+		where notice_number = #{notice_number}
+	</update>
+	
+	<!-- Notice 카테고리로 찾기  -->
+	<select id="noticeGetCategory"
+		parameterType="com.soldesk.spring.notice.NoticeSelector"
+		resultType="com.soldesk.spring.notice.Notice">
+		select notice_title, notice_number, notice_category, notice_id
+		from notice
+		where notice_category = #{notice_category}
+	</select>
 </mapper>
