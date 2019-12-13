@@ -1,7 +1,12 @@
 #sns_title {
-	font-size: 30px;
-	font-weight: 700;
 	padding-bottom: 35px;
+}
+
+#sns_img img {
+	margin-top: 25px;
+	width: 220px;
+	height: 100px;
+	opacity: 0.4;
 }
 
 #sns_head_area {

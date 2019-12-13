@@ -64,6 +64,22 @@ public class NoticeDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	// Notice 카테고리 검색
+	public void noticeGetCategory(int t, HttpServletRequest req, HttpServletResponse res) {
+		try {
+			
+		Notice n = new Notice();
+		n.setNotice_number(new BigDecimal(t));
+		
+		List<Notice> notices = ss.getMapper(NoticeMapper.class).noticeGetCategory(n);
+		
+		req.setAttribute("notices", notices);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 
 	// Notice 작성하기
@@ -115,6 +131,8 @@ public class NoticeDAO {
 			req.setAttribute("result", "글수정실패");
 		}
 	}
-	}
 	
 
+
+	
+}

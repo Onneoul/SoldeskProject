@@ -9,8 +9,12 @@
 <body>
 	<table id="site_main">
 		<tr>
-			<td id="site_main_img" colspan="2">
-				<img src="resources/img/Penguins.jpg"></img>
+			<td id="site_main_img" colspan="3" align="center">
+			 <div id="slide" val="1" mx="3">
+				<li id="img1"><img src="resources/img/20160721105710571.jpg" alt=""/></li>
+				<li id="img2"><img src="resources/img/slideimg5.jpg" alt=""/></li>
+				<li id="img3"><img src="resources/img/slideimg3.jpg" alt=""/></li>
+			</div>
 			</td>
 		</tr>
 		<tr align="center">

@@ -11,7 +11,7 @@
 <body>
 	<table class="page_title_table">
 		<tr>
-			<td class="page_title">게시판</td>			
+			<td id="sns_img"><img src="resources/img/sns.png"></td>			
 		</tr>
 	</table>
 	<form action="sns.index" method="post">

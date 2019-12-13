@@ -49,14 +49,14 @@
 	right: 100px;
 	border-top: 2px solid #0078FF99;	
 	border-bottom: 2px solid #0078FF99;	
-	width: 440px;
+	width: 550px;
 	color: #555555;
 	padding-bottom: 7px;
 }
 
 #site_main_review_more {
 	position: relative;
-	left: 230px;
+	left: 330px;
 }
 
 .site_main_review_title {
@@ -73,3 +73,25 @@
 	color: white;
 	cursor: pointer;
 }
+
+  #slide{
+  	text-align: center;
+      width: 70%;
+    }
+
+    #slide li{
+		
+	list-style: none;
+      display:none;
+
+      -webkit-display:block;
+
+    }
+
+    #slide img{
+
+      width:100%;
+
+		height: 500px;
+
+    } 

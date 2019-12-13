@@ -11,6 +11,17 @@
 	<div id="notice_content_img"><img src="resources/img/notice.gif"></img></div>
 	<table id="notice_write_area" style="border-spacing: 0px;">
 		<tr>
+			<td id="notice_write_category">게시글</td>
+			<td id="notice_update_category">
+				<c:if test="${noticeContent.notice_category == 1}">
+					<div>공지사항</div> 
+				</c:if>
+				<c:if test="${noticeContent.notice_category == 2}">
+					<div>이벤트</div> 
+				</c:if>
+			</td>
+		</tr>
+		<tr>
 			<td id="notice_write_txt">TITLE</td>
 			<td id="notice_write_title">${noticeContent.notice_title }</td>
 		</tr>
@@ -23,10 +34,11 @@
 			</td>
 		</tr>
 		<tr>
-			<td id="notice_write_writebtn" colspan="2"><button>뒤로가기</button></td>
+			<td id="notice_write_writebtn" colspan="2"><button onclick="goNotice();">뒤로가기</button>
 			<c:if test="${'admin' == sessionScope.loginMember.member_id }">
-				<button onclick="goNoticeUpdate(${noticeContent.notice_number});">수정하기</button>
+				<button onclick="goNoticeUpdate(${noticeContent.notice_number});" style="margin-left: 25px;">수정하기</button>
 			</c:if>
+			</td>
 		</tr>
 	</table>
 </body>

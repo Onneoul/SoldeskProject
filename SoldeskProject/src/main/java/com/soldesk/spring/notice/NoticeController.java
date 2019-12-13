@@ -61,13 +61,23 @@ public class NoticeController {
 	
 	// notice 내용 이동
 	@RequestMapping(value = "notice.content", method = RequestMethod.GET)
-	public String noticeContent(HttpServletRequest req, HttpServletResponse res) {
+	public String noticeContent(Notice n, HttpServletRequest req, HttpServletResponse res) {
 		mDAO.memberLoginCheck(req, res);
 		int t = Integer.parseInt(req.getParameter("notice_number"));
 		nDAO.noticeContent(t, req, res);
 		req.setAttribute("content", "notice/content.jsp");
 		return "index";
 	}
+	
+	// notice 카테고리내용 이동
+		@RequestMapping(value = "notice.category", method = RequestMethod.GET)
+		public String noticeCategory(Notice n, HttpServletRequest req, HttpServletResponse res) {
+			mDAO.memberLoginCheck(req, res);
+			int t = Integer.parseInt(req.getParameter("notice_category"));
+			nDAO.noticeGetCategory(t, req, res);
+			req.setAttribute("content", "notice/content.jsp");
+			return "index";
+		}
 	
 	// notice 수정페이지 이동
 		@RequestMapping(value = "notice.update.go", method = RequestMethod.GET)

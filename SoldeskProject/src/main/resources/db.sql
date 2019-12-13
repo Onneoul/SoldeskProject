@@ -123,3 +123,13 @@ select * from notice;
 drop table notice;
 
 LIMIT 0, 5;
+
+
+		select * from
+		(
+			select notice_number, notice_title,
+			lead(notice_title, 1, '다음글이 없습니다.') over (order by notice_number) next_title,
+			lag(notice_title, 1, '이전글이 없습니다.') over (order by notice_number) pre_title
+			from notice
+		)		
+		where notice_number = 29;

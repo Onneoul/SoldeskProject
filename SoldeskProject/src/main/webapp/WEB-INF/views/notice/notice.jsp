@@ -13,6 +13,15 @@
 		<tr>
 			<td>
 				<table id="notice_area">
+					<tr>
+						<td id="notice_category_select" colspan="3">
+							<select id="notice_category_sel">
+								<option class="notice_category_opt">전체</option>
+								<option class="notice_category_opt" value="1">공지사항</option>
+								<option class="notice_category_opt" value="2">이벤트</option>
+							</select>
+						</td>
+					</tr>
 					<tr id="notice_tr_txt">
 						<td id="notice_no_txt">No.</td>
 						<td id="notice_title_txt">Title</td>
@@ -26,14 +35,16 @@
 					</tr>
 				</c:forEach>
 				<tr>
-					<td id="notice_paging" colspan="3">
+					<td id="notice_paging">
 						<c:if test="${curPage != 1 }">
 							<a id="noticeL" href="notice.page.change?p=${curPage - 1 }">이전페이지로</a>
 						</c:if>
+					</td>
+					<td id="notice_paging" colspan="2">
 							<a class="notice_page_no" href="notice.page.change?p=${curPage }">${curPage }Page</a>
 						<c:if test="${curPage != pageCount }">
 							<a id="noticeR" href="notice.page.change?p=${curPage + 1 }">다음페이지로</a>
-						</c:if>
+						</c:if>					
 					</td>
 				</tr>
 				<c:if test="${'admin' == sessionScope.loginMember.member_id }">
