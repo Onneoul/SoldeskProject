@@ -18,6 +18,13 @@
 			<td id="notice_write_title"><input name="notice_title"></td>
 		</tr>
 		<tr>
+			<td id="notice_write_category">게시글</td>
+			<td id="notice_update_category">
+				<div><input type="radio" name="notice_category" value="1"><label>공지사항</label></div> 
+				<div><input type="radio" name="notice_category" value="2"><label>이벤트</label></div> 
+			</td>		
+		</tr>
+		<tr>
 			<td id="notice_write_txatxt" colspan="2">내용</td>
 		</tr>
 		<tr>

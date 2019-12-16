@@ -2,20 +2,22 @@ package com.soldesk.spring.notice;
 
 import java.math.BigDecimal;
 
-public class NoticeSelector {
+public class NoticeCategory {
 	private String search;
 	private BigDecimal start;
 	private BigDecimal end;
+	private BigDecimal notice_category;
 	
-	public NoticeSelector() {
+	public NoticeCategory() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NoticeSelector(String search, BigDecimal start, BigDecimal end) {
+	public NoticeCategory(String search, BigDecimal start, BigDecimal end, BigDecimal notice_category) {
 		super();
 		this.search = search;
 		this.start = start;
 		this.end = end;
+		this.notice_category = notice_category;
 	}
 
 	public String getSearch() {
@@ -42,6 +44,13 @@ public class NoticeSelector {
 		this.end = end;
 	}
 
+	public BigDecimal getNotice_category() {
+		return notice_category;
+	}
+
+	public void setNotice_category(BigDecimal notice_category) {
+		this.notice_category = notice_category;
+	}
 	
 	
 }

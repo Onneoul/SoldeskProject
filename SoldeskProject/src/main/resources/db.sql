@@ -46,7 +46,7 @@ create sequence sns_reply_seq;
 
 select * from Member where member_id = 'test';
 
-select * from sns;
+select * from member;
 
 select *
 		from (
@@ -116,6 +116,7 @@ create table notice (
 
 insert into notice values(notice_seq.nextval, '제목', '내용', '123');
 
+select * from notice;
 create sequence notice_seq;
 
 select * from notice;

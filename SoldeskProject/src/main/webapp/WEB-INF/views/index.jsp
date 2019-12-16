@@ -19,7 +19,6 @@
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
 <script type="text/javascript" src="resources/js/site_move.js"></script>
 
-
 <script type="text/javascript" src="resources/js/homeSlide.js"></script>
 <link rel="stylesheet" href="resources/css/homeSlide.css">
 
@@ -63,5 +62,12 @@
 					page="${content }"></jsp:include></td>
 		</tr>
 	</table>
+	<!-- 메뉴 마우스 대면 나오는 부분 -->
+	<div id="site_menu_notice_js">
+		<ul>
+			<li class="site_menu_notice_li">공지사항</li>
+			<li class="site_menu_notice_li">이벤트</li>
+		</ul>
+	</div>
 </body>
 </html>

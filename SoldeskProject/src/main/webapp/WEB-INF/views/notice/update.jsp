@@ -15,7 +15,7 @@
 	<input type="hidden" name="notice_number" value="${noticeContent.notice_number }">
 	<table id="notice_write_area" style="border-spacing: 0px;">
 		<tr>
-			<td id="notice_write_category">게시글</td>
+			<td id="notice_write_category" colspan="2">게시글</td>
 			<td id="notice_update_category">
 				<div><input type="radio" name="notice_category" value="1" style="background-color: red;"><label>공지사항</label></div> 
 				<div><input type="radio" name="notice_category" value="2"><label>이벤트</label></div> 

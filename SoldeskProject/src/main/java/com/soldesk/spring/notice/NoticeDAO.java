@@ -35,30 +35,36 @@ public class NoticeDAO {
 	public void noticeView(int pageNo, HttpServletRequest req, HttpServletResponse res) {
 		
 		try {
-		int count = so.getCountPerPage();
-		
-		int start = (pageNo - 1) * count + 1;
-		int end = start + (count - 1);
-		
-		NoticeSelector search = (NoticeSelector) req.getSession().getAttribute("search");
-		int noticeCount = 0;
-		
-		if(search==null) {
-			search= new NoticeSelector("", new BigDecimal(start), new BigDecimal(end));
-			noticeCount = allNoticeCount;
-		} else {
-			search.setStart(new BigDecimal(start));
-			search.setEnd(new BigDecimal(end));
-		// noticeCount = ss.getMapper(NoticeMapper.class).getCount(search);
-		}
-		
-		List<Notice> notices = ss.getMapper(NoticeMapper.class).noticeView(search);
-	
-		
-		req.setAttribute("notices", notices);
-		req.setAttribute("curPage", pageNo);
-		int pageCount = (int) Math.ceil(noticeCount/ (double)count);
-		req.setAttribute("pageCount", pageCount);
+			
+			if (req.getParameter("notice_category") != null) {
+				noticeGetCategory(pageNo, req, res);
+			} else {
+				int count = so.getCountPerPage();
+				
+				int start = (pageNo - 1) * count + 1;
+				int end = start + (count - 1);
+				
+				NoticeSelector search = (NoticeSelector) req.getSession().getAttribute("search");
+				int noticeCount = 0;
+				
+				if(search==null) {
+					search= new NoticeSelector("", new BigDecimal(start), new BigDecimal(end));
+					noticeCount = allNoticeCount;
+				} else {
+					search.setStart(new BigDecimal(start));
+					search.setEnd(new BigDecimal(end));
+				// noticeCount = ss.getMapper(NoticeMapper.class).getCount(search);
+				}
+				
+				
+				List<Notice> notices = ss.getMapper(NoticeMapper.class).noticeView(search);
+			
+				
+				req.setAttribute("notices", notices);
+				req.setAttribute("curPage", pageNo);
+				int pageCount = (int) Math.ceil(noticeCount/ (double)count);
+				req.setAttribute("pageCount", pageCount);
+			}
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,20 +72,39 @@ public class NoticeDAO {
 	}
 	
 	// Notice 카테고리 검색
-	public void noticeGetCategory(int t, HttpServletRequest req, HttpServletResponse res) {
+	private void noticeGetCategory(int pageNo, HttpServletRequest req, HttpServletResponse res) {
 		try {
-			
-		Notice n = new Notice();
-		n.setNotice_number(new BigDecimal(t));
+			int count = so.getCountPerPage();
 		
-		List<Notice> notices = ss.getMapper(NoticeMapper.class).noticeGetCategory(n);
+			int start = (pageNo - 1) * count + 1;
+			int end = start + (count - 1);
+		
+			NoticeCategory search = (NoticeCategory) req.getSession().getAttribute("search");
+			int noticeCount = 0;
+		
+			if(search==null) {
+				search= new NoticeCategory("", new BigDecimal(start), new BigDecimal(end), new BigDecimal(Integer.parseInt(req.getParameter("notice_category"))));
+				noticeCount = allNoticeCount;
+			} else {
+				search.setStart(new BigDecimal(start));
+				search.setEnd(new BigDecimal(end));
+			}
+			
+		List<Notice> notices = ss.getMapper(NoticeMapper.class).noticeGetCategory(search);
+		
 		
 		req.setAttribute("notices", notices);
+		req.setAttribute("curPage", pageNo);
+		int pageCount = (int) Math.ceil(noticeCount/ (double)count);
+		req.setAttribute("pageCount", pageCount);
+		req.setAttribute("category", req.getParameter("notice_category"));
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 
 	// Notice 작성하기

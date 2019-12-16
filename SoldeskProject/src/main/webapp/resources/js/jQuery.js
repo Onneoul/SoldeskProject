@@ -21,8 +21,15 @@ function memberAddressSearch() {
 
 function noticeCategoryClick() { 
 	$("#notice_category_sel").on("change", function () { 
-		var value = $(this).val(); 
-		location.href = "notice.view?notice_category=" + value;
+		var value = $(this).val();
+		
+		if (value == null) {
+			location.href = "notice.view";
+			
+		} else {
+			location.href = "notice.view?notice_category=" + value;
+		}
+			
 	}); 
 }
 

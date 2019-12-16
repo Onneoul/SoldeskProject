@@ -226,14 +226,12 @@ public class MemberDAO {
 		}
 	}
 	
-	/*
-	// Json용
+
 	public Members getMember(Member m, HttpServletRequest req) {		
 		List<Member> members 
 			= ss.getMapper(MemberMapper.class).getMemberByID2(m);		
 		Members ms = new Members(members);		
 		return ms;
 	}
-	*/
-	
+
 }

@@ -48,7 +48,7 @@
 
 	<!-- Notice 카테고리로 찾기 -->
 	<select id="noticeGetCategory"
-		parameterType="hashmap"
+		parameterType="com.soldesk.spring.notice.NoticeCategory"
 		resultType="com.soldesk.spring.notice.Notice">
 		select *
 		from (

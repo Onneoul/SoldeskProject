@@ -97,5 +97,16 @@ public class MemberController {
 		req.setAttribute("content", "home.jsp");
 		return "index";
 	}
+	
+	// JSON용 (produces 추가)
+	@RequestMapping(
+				value = "member.get", 
+				method = RequestMethod.GET,
+				produces = "application/json; charset=utf-8")
+	public@ResponseBody Members memberGet(Member m,
+			HttpServletRequest req, HttpServletResponse res) {
+	
+		return mDAO.getMember(m, req);
+	}
 
 }

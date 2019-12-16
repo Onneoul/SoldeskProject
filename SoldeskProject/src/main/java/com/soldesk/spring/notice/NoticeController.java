@@ -27,6 +27,7 @@ public class NoticeController {
 		req.setAttribute("content", "notice/notice.jsp");
 		return "index";
 	}
+	
 
 	// notice 글쓰기 페이지로 이동
 	@RequestMapping(value = "notice.write.go", method = RequestMethod.GET)
@@ -69,15 +70,6 @@ public class NoticeController {
 		return "index";
 	}
 	
-	// notice 카테고리내용 이동
-		@RequestMapping(value = "notice.category", method = RequestMethod.GET)
-		public String noticeCategory(Notice n, HttpServletRequest req, HttpServletResponse res) {
-			mDAO.memberLoginCheck(req, res);
-			int t = Integer.parseInt(req.getParameter("notice_category"));
-			nDAO.noticeGetCategory(t, req, res);
-			req.setAttribute("content", "notice/content.jsp");
-			return "index";
-		}
 	
 	// notice 수정페이지 이동
 		@RequestMapping(value = "notice.update.go", method = RequestMethod.GET)

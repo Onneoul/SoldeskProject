@@ -35,17 +35,32 @@
 					</tr>
 				</c:forEach>
 				<tr>
+				<c:if test="${category == null}">
 					<td id="notice_paging">
-						<c:if test="${curPage != 1 }">
-							<a id="noticeL" href="notice.page.change?p=${curPage - 1 }">이전페이지로</a>
-						</c:if>
+							<c:if test="${curPage != 1 }">
+								<a id="noticeL" href="notice.page.change?p=${curPage - 1 }">이전페이지로</a>
+							</c:if>
+						</td>
+							<td id="notice_paging" colspan="2">
+								<a class="notice_page_no" href="notice.page.change?p=${curPage }">${curPage }Page</a>
+							<c:if test="${curPage != pageCount }">
+								<a id="noticeR" href="notice.page.change?p=${curPage + 1 }">다음페이지로</a>
+							</c:if>			
 					</td>
-					<td id="notice_paging" colspan="2">
-							<a class="notice_page_no" href="notice.page.change?p=${curPage }">${curPage }Page</a>
-						<c:if test="${curPage != pageCount }">
-							<a id="noticeR" href="notice.page.change?p=${curPage + 1 }">다음페이지로</a>
-						</c:if>					
+					</c:if>
+				<c:if test="${category != null }">
+						<td id="notice_paging">
+							<c:if test="${curPage != 1 }">
+								<a id="noticeL" href="notice.page.change?p=${curPage - 1 }&notice_category=${category}">이전페이지로</a>
+							</c:if>
+						</td>
+							<td id="notice_paging" colspan="2">
+								<a class="notice_page_no" href="notice.page.change?p=${curPage }&notice_category=${category}">${curPage }Page</a>
+							<c:if test="${curPage != pageCount }">
+								<a id="noticeR" href="notice.page.change?p=${curPage + 1 }&notice_category=${category}">다음페이지로</a>
+							</c:if>			
 					</td>
+				</c:if>	
 				</tr>
 				<c:if test="${'admin' == sessionScope.loginMember.member_id }">
 					<tr>
