@@ -5,6 +5,7 @@ $(function() {
 	noticeTitleClick();
 	imgslide();
 	noticeCategoryClick();
+	siteMenu1Mouse();
 });
 
 // 회원가입 주소검색
@@ -74,6 +75,14 @@ function memberIdCheck() {
 		});
 	});
 }
+
+
+function siteMenu1Mouse() {
+	$("#site_head_menu1").onmouseover(function() {
+		$("#site_menu_notice_js").css("opacity","1");
+	});
+}
+
 
 function imgslide(){
 

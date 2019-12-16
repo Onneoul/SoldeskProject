@@ -45,7 +45,7 @@
 					<tr>
 						<td colspan="2">
 							<ul id="site_head_menu">
-								<li onclick="goNotice();" style="cursor: pointer;">공지사항</li>
+								<li id="site_head_menu1" onclick="goNotice();" style="cursor: pointer;">공지사항</li>
 								<li onclick="goSNS();" style="cursor: pointer;">게시판</li>
 								<li><a href="TheaterInfo.com.theater">공연정보</a></li>
 								<li>고객센터</li>
