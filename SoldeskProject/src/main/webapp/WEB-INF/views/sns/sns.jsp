@@ -32,6 +32,7 @@
 				<form action="sns.write" method="POST" name="snsWriteForm"
 					onsubmit="return snsWriteCheck();">
 					<input type="hidden" name="token" value="${token }">
+					<input type="hidden" name="sns_user" value="${sessionScope.loginMember.member_id }">
 					<table id="sns_snswrite_input">
 						<tr>
 							<td><textarea name="sns_text" maxlength="250"
@@ -81,7 +82,7 @@
 			<c:if test="${sessionScope.loginMember != null }">
 				<tr>
 					<td class="sns_reply_write">
-						<form action="sns.reply.write"
+						<form action="sns.reply.write" method="get" name="snsReplyWriteForm" 
 							onsubmit="return snsReplyWriteCheck(this);">
 							<span class="SNSReply_id">${sessionScope.loginMember.member_id }</span>
 							<input id="SNSComment_me" type="hidden" name="token" value="${token }"> 

@@ -37,18 +37,37 @@
 						<td>
 							<table id="site_title">
 								<tr>
-									<td onclick="goHome();">홈페이지 제목</td>
+									<td onclick="goHome();"><img alt="" src="resources/img/mainlogo.jpg"></td>
 								</tr>
 							</table>
 						</td>
 					</tr>
+				</table>
+				<table id="site_head_menu_area">
 					<tr>
-						<td colspan="2">
+						<td colspan="3">
 							<ul id="site_head_menu">
-								<li id="site_head_menu1" onclick="goNotice();" style="cursor: pointer;">공지사항</li>
-								<li onclick="goSNS();" style="cursor: pointer;">게시판</li>
-								<li><a href="TheaterInfo.com.theater">공연정보</a></li>
-								<li>고객센터</li>
+								<li id="site_head_menu1" onclick="siteMenu1Mouse();" style="cursor: pointer;">
+								연극소식
+								</li>
+								<!-- 메뉴 마우스 대면 나오는 부분 -->
+									<table id="site_menu_notice_js">
+										<tr><td class="site_menu_notice_li"><a href="notice.view?notice_category=1">공지사항</a></td></tr>
+										<tr><td class="site_menu_notice_li"><a href="notice.view?notice_category=2">이 벤 트</a></td></tr>
+									</table>
+								<li id="site_head_menu2" style="cursor: pointer;">
+								게시판
+								</li>
+								<!-- 메뉴 마우스 대면 나오는 부분 -->
+									<table id="site_menu_sns_js">
+											<tr><td id="site_menu_sns_li" onclick="goSNS();">SNS</td></tr>
+									</table>
+								<li id="site_head_menu3" style="cursor: pointer;">
+									<a href="TheaterInfo.com.theater">공연정보</a>
+								</li>
+								<li id="site_head_menu4" style="cursor: pointer;">
+									<a href="TheaterInfo.com.theater">고객센터</a>
+								</li>
 							</ul>
 						</td>
 					</tr>
@@ -62,12 +81,5 @@
 					page="${content }"></jsp:include></td>
 		</tr>
 	</table>
-	<!-- 메뉴 마우스 대면 나오는 부분 -->
-	<div id="site_menu_notice_js">
-		<ul>
-			<li class="site_menu_notice_li">공지사항</li>
-			<li class="site_menu_notice_li">이벤트</li>
-		</ul>
-	</div>
 </body>
 </html>

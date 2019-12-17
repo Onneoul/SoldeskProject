@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table style="border-spacing: 0px;">
 		<tr id="site_login">
-			<td><button onclick="goMemberLogin();">로그인</button></td>
-			<td id="site_login_bar">|</td>
-			<td><button onclick="goMemberJoin();">회원가입</button></td>
+			<td class="site_login_btn"><button onclick="goMemberLogin();">로그인</button></td>
+			<td><span id="site_login_bar">&nbsp;|&nbsp;</span></td>
+			<td class="site_login_btn"><button onclick="goMemberJoin();">회원가입</button></td>
 		</tr>
 	</table>
 </body>

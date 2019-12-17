@@ -45,6 +45,12 @@
 		where sns_user = member_id and sns_text like '%'||#{search}||'%'
 	</select>
 	
+	<select id="getSNSCountById"
+		parameterType="com.soldesk.spring.member.Member"
+		resultType="java.lang.Integer">
+		select count(*) from SNS where sns_user = #{member_id}
+	</select>
+	
 	<!-- 리플 가져오기 -->
 	<select id="getReply"
 		parameterType="com.soldesk.spring.sns.SNS"

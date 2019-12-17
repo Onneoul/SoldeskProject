@@ -41,28 +41,36 @@ function memberJoinCheck() {
 		alert("사진을 등록하세요.");
 		return false;
 	}
+	alert("회원가입이 완료되었습니다.");
 	return true;
-	alert("가입완료");
 }
 function snsWriteCheck() {
 	var textInput = document.snsWriteForm.sns_text;
-
-	if (isEmpty(textInput)) {
+	var idInput = document.snsWriteForm.sns_user;
+	
+	if (isEmpty(idInput)) {
+		alert("로그인이 필요합니다.");
+		location.href = "member.login.go";
+		return false;
+	} else if (isEmpty(textInput)) {
 		alert("작성하지 않아 등록할 수 없습니다.")
 		textInput.focus();
 		return false;
 	}
+	alert("등록이 완료되었습니다.");
 	return true;
 }
 
-function snsReplyWriteCheck() {
-	var textInput = f.txt;
+function snsReplyWriteCheck(f) {
+	var textInput = f.reply_text;
+	var idInput = f.reply_user;
 	
 	if (isEmpty(textInput)) {
 		alert("댓글을 입력하세요.");
 		textInput.focus();
 		return false;
 	}
+	alert("댓글등록이 완료되었습니다.");
 	return true;
 }
 
@@ -79,5 +87,6 @@ function noticeWriteCheck() {
 		textInput.focus();
 		return false;
 	}
+	alert("공지등록이 완료되었습니다.");
 	return true;
 }

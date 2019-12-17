@@ -16,12 +16,17 @@ import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.soldesk.spring.sns.SNSDAO;
+import com.soldesk.spring.sns.SNSMapper;
 
 @Service
 public class MemberDAO {
 	
 	@Autowired
 	private SqlSession ss;
+	
+	@Autowired
+	private SNSDAO sDAO;
 	
 	// 회원가입
 	public void memberJoin(Member m, HttpServletRequest req, HttpServletResponse res) {
@@ -191,30 +196,27 @@ public class MemberDAO {
 
 	// 회원탈퇴
 	public void memberDelete(HttpServletRequest req, HttpServletResponse res) {
+		
 		try {
 			Member m = (Member) req.getSession().getAttribute("loginMember");		
-			/*
-			int msgCount = ss.getMapper(SNSMapper.class).getMsgCountByOwner(m);
+			int msgCount = ss.getMapper(SNSMapper.class).getSNSCountById(m);
 			
 			// 회원탈퇴할 때 총 게시글개수 가져와서
-			int allMsgCount = sDAO.getAllMsgCount();
-			System.out.println(allMsgCount);
-			if (ss.getMapper(MemberMapper.class).bye(m) == 1) {
+			int allSNSCount = sDAO.getAllSNSCount();
+			System.out.println(allSNSCount);
+			
+			if (ss.getMapper(MemberMapper.class).memberDelete(m) == 1) {
 				req.setAttribute("result", "회원탈퇴완료");
 				
 				// 회원탈퇴가 성공하면 총 게시글에서 탈퇴한사람이 쓴 게시글개수만큼 빼기
-				sDAO.setAllMsgCount(allMsgCount - msgCount);
-				System.out.println(sDAO.getAllMsgCount());
-			*/
-			// 밑에것 댓글 달 때, 지우기
-			if (ss.getMapper(MemberMapper.class).memberDelete(m) == 1) {
-			
+				sDAO.setAllSNSCount(allSNSCount - msgCount);
+				System.out.println(sDAO.getAllSNSCount());
+				
 				String path = req.getSession().getServletContext().getRealPath("resources/img");
 				String member_photo = m.getMember_photo();
 				member_photo = URLDecoder.decode(member_photo, "euc-kr");
 				new File(path + "/" + member_photo).delete();
 
-				req.setAttribute("result", "회원탈퇴성공");
 				logout(req, res);
 				memberLoginCheck(req, res);
 			} else {

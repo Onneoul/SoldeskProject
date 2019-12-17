@@ -70,6 +70,27 @@
 	border: 2px solid #46B8FF;
 }
 
+.join_input input {
+	width: 300px;
+	height: 40px;
+	padding: 2px 7px;
+	margin-bottom: 15px;
+	border: 2px solid #46B8FF;
+}
+
+#join_idchk {
+	padding-top: -4px;
+}
+
+#join_addr_input input {
+	width: 300px;
+	height: 40px;
+	padding: 2px 7px;
+	border: 2px solid #46B8FF;
+	margin-bottom: 1px;
+	border-spacing: 0;
+}
+
 #loginform_btn button {
 	margin-top: 15px;
 	width: 320px;
@@ -79,6 +100,13 @@
 	color: white;
 	font-size: 22px;
 	font-weight: 700;
+}
+
+.join_txt {
+	font-size: 18px;
+	font-weight: 600;
+	color: #555555;
+	padding-bottom: 4px;
 }
 
 #info_photxt {
@@ -94,7 +122,7 @@
 }
 
 #info_area {
-	height: 250px;
+	height: 180px;
 }
 
 #info_main tr {
@@ -103,7 +131,7 @@
 
 .info_txt1 {
 	text-align: center;
-	font-size: 22px;
+	font-size: 18px;
 	font-weight: 600;
 	background-color: #32A4FF;
 	width: 150px;
@@ -114,7 +142,7 @@
 	width: 250px;
 	text-align: left;
 	padding-left: 15px;
-	font-size: 20px;
+	font-size: 17px;
 	border-bottom: 2px solid #32A4FF;
 	padding-top: 10px;
 	height: 40px;
@@ -160,12 +188,16 @@
 	
 }
 
-.update_txt {
-	font-size: 25px;
+.update_txt1 {
+	font-size: 18px;
 	font-weight: 600;
-	padding: 8px;
 	color: #1E90FF;
 	padding-right: 25px;
+	padding-bottom: 15px;
+}
+
+.update_input1 {
+	padding-bottom: 15px;
 }
 
 .update_input1 input {
@@ -175,20 +207,43 @@
 	font-weight: 600;
 }
 
+.update_txt2 {
+	font-size: 18px;
+	font-weight: 600;
+	color: #1E90FF;
+	padding-right: 25px;
+	padding: 10px 0px;
+}
+
 .update_input2 input {
 	border: none;
 	border-bottom: 2px solid #3CAEFF;
 	font-size: 16px;
-	font-weight: 300;
+	padding: 10px 0px;
 	padding-left: 5px;
+	outline: none;
+}
+
+.update_input3 {
+	padding-top: 20px;
+}
+
+.update_txt3 {
+	font-size: 18px;
+	font-weight: 600;
+	color: #1E90FF;
+	padding-right: 25px;
+	padding-top: 10px;
 }
 
 .update_input3 input {
 	border: none;
 	border-bottom: 2px solid #3CAEFF;
 	font-size: 16px;
-	padding: 5px 3px;
+	padding: 5px 0px;
 	padding-left: 5px;
+	width: 250px;
+	outline: none;
 }
 
 #update_btn button {
@@ -205,8 +260,8 @@
 
 #update_address_btn {
 	position: absolute;
-	top : 525px;
-	right : 450px;
+	top : 485px;
+	right : 425px;
 	background: #289AFF;
 	color: white;
 	border: none;
@@ -214,4 +269,53 @@
 	height: 35px;
 	font-weight: 700;
 	border-radius: 3px;
+}
+
+#site_login {
+	position: absolute;
+	right: 290px;
+}
+
+.site_login_btn button {
+	background-color: transparent;
+	outline: none;
+	border: none;
+	font-size: 15px;
+	font-weight: 600;
+	padding: 0;
+	color: #666666;
+	border-bottom: 2px solid white;
+}
+
+.site_login_btn button:active {
+	background-color: transparent;
+	outline: none;
+	border: none;
+	font-size: 15px;
+	font-weight: 600;
+	padding: 0;
+	color: #666666;
+	border-bottom: 2px solid white;
+}
+
+.site_login_btn button:hover {
+	background-color: transparent;
+	outline: none;
+	border: none;
+	font-size: 15px;
+	font-weight: 600;
+	padding: 0;
+	color: #666666;
+	font-weight: 700;
+	border-bottom: 2px solid #666666;
+}
+
+#site_login_icon {
+	width: 70px;
+	height: 70px;
+	background-color: transparent;
+}
+
+#site_login_successID {
+	padding-bottom: 5px;
 }

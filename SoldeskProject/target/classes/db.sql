@@ -8,13 +8,17 @@ CREATE TABLE Member
     member_photo     VARCHAR2(50)    NOT NULL, 
     member_level     NUMBER(1)       NOT NULL
 );
-                                                      
+select * from MEMBER; 
+
+drop table member cascade constraint;
+
 alter table notice modify(notice_title varchar2(200));
 
 
 insert into Member values(Member_seq.nextval, 'test2', '123', '123', '1', '1', 1);
 insert into SNS values(SNS_seq.nextval, '123', '1', sysdate);
 create sequence Member_seq;
+
 
 
 select * from SNS;
@@ -37,9 +41,14 @@ CREATE TABLE SNS
     sns_text      VARCHAR2(255)    NOT NULL, 
     sns_date      DATE             NOT NULL,
     CONSTRAINT FK_SNS_sns_user
-    FOREIGN KEY (sns_user) REFERENCES Member (member_id) 
+    FOREIGN KEY (sns_user) REFERENCES Member (member_id)
+    on delete cascade
 );
 
+select * from sns;
+drop table SNS cascade constraint;
+
+delete from member where member_id='123';
 
 create sequence sns_reply_seq;
 

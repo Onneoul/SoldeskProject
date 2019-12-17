@@ -17,33 +17,33 @@
 				name="memberJoinForm" onsubmit="return memberJoinCheck();">
 		<table id="join_table">
 			<tr>
-				<td>아이디 입력</td>
+				<td class="join_txt">아이디 입력</td>
 			</tr>
 			<tr>
-				<td class="join_input"><input id="member_idInput" name="member_id" placeholder="영어/숫자만" maxlength="10" autocomplete="off" autofocus="autofocus"><br>
+				<td class="join_input"><input id="member_idInput" name="member_id" placeholder="영어/숫자만" maxlength="10" autocomplete="off" autofocus="autofocus" style="margin-bottom: 3px !important;"><br>
 					<div id="join_idchk">중복된 ID입니다</div>
 				</td>
 			</tr>
 			<tr>
-				<td>비밀번호 입력</td>
+				<td class="join_txt">비밀번호 입력</td>
 			</tr>
 			<tr>
 				<td class="join_input"><input name="member_pw" type="password" placeholder="영어/숫자만" maxlength="10" autocomplete="off" autofocus="autofocus"></td>
 			</tr>
 			<tr>
-				<td>비밀번호 확인</td>
+				<td class="join_txt">비밀번호 확인</td>
 			</tr>
 			<tr>
 				<td class="join_input"><input name="member_pwChk" type="password" placeholder="비밀번호 한번 더 입력" maxlength="10" autocomplete="off" autofocus="autofocus"></td>
 			</tr>
 			<tr>
-				<td>이름</td>
+				<td class="join_txt">이름</td>
 			</tr>
 			<tr>
 				<td class="join_input"><input name="member_name" placeholder="필수" maxlength="10" autocomplete="off" autofocus="autofocus"></td>
 			</tr>
 			<tr>
-				<td>주소</td>
+				<td class="join_txt">주소</td>
 			</tr>
 			<tr>
 				<td id="join_addr_input">
@@ -53,7 +53,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>사진등록</td>
+				<td class="join_txt">사진등록</td>
 			</tr>
 			<tr>
 				<td id="join_photo_input"><input name="member_photo" type="file" style="width: 310px; height: 30px; background-color: white;"></td>

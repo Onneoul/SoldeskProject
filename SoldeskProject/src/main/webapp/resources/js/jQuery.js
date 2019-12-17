@@ -6,6 +6,7 @@ $(function() {
 	imgslide();
 	noticeCategoryClick();
 	siteMenu1Mouse();
+	siteMenu2Mouse();
 });
 
 // 회원가입 주소검색
@@ -76,11 +77,72 @@ function memberIdCheck() {
 	});
 }
 
-
 function siteMenu1Mouse() {
-	$("#site_head_menu1").onmouseover(function() {
-		$("#site_menu_notice_js").css("opacity","1");
-	});
+		var element = document.getElementById("site_head_menu1");
+		var element2 = document.getElementById("site_menu_notice_js");
+		var result = true;
+		element.onmouseenter = function() {
+			$("#site_menu_notice_js").css("opacity","1");
+			$("#site_menu_notice_js").css("top","138px");
+			$("#site_menu_notice_js").css("left","335px");
+			result = false;
+		}
+		element2.onmouseenter = function () {
+			if (!result) {
+				$("#site_menu_notice_js").css("opacity","1");
+				$("#site_menu_notice_js").css("top","138px");
+				$("#site_menu_notice_js").css("left","335px");
+				result = true;
+			} else {
+				$("#site_menu_notice_js").css("opacity","0");	
+				$("#site_menu_notice_js").css("top","-138px");
+				$("#site_menu_notice_js").css("left","-335px");
+			}
+		} 
+		element.onmouseleave = function() {
+				$("#site_menu_notice_js").css("opacity","0");	
+				$("#site_menu_notice_js").css("top","-138px");
+				$("#site_menu_notice_js").css("left","-335px");
+		}
+		element2.onmouseleave = function () {
+				$("#site_menu_notice_js").css("opacity","0");	
+				$("#site_menu_notice_js").css("top","-138px");
+				$("#site_menu_notice_js").css("left","-335px");
+		}
+}
+
+function siteMenu2Mouse() {
+	var element = document.getElementById("site_head_menu2");
+	var element2 = document.getElementById("site_menu_sns_js");
+	var result = true;
+	element.onmouseenter = function() {
+		$("#site_menu_sns_js").css("opacity","1");
+		$("#site_menu_sns_js").css("top","138px");
+		$("#site_menu_sns_js").css("left","547px");
+		result = false;
+	}
+	element2.onmouseenter = function () {
+		if (!result) {
+			$("#site_menu_sns_js").css("opacity","1");
+			$("#site_menu_sns_js").css("top","138px");
+			$("#site_menu_sns_js").css("left","547px");
+			result = true;
+		} else {
+			$("#site_menu_sns_js").css("opacity","0");	
+			$("#site_menu_sns_js").css("top","-138px");
+			$("#site_menu_sns_js").css("left","-547px");
+		}
+	} 
+	element.onmouseleave = function() {
+			$("#site_menu_sns_js").css("opacity","0");	
+			$("#site_menu_sns_js").css("top","-138px");
+			$("#site_menu_sns_js").css("left","-547px");
+	}
+	element2.onmouseleave = function () {
+			$("#site_menu_sns_js").css("opacity","0");	
+			$("#site_menu_sns_js").css("top","-139px");
+			$("#site_menu_sns_js").css("left","-335px");
+	}
 }
 
 

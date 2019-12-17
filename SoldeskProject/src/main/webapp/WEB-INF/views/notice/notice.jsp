@@ -13,7 +13,7 @@
 		<tr>
 			<td>
 				<table id="notice_area">
-					<tr>
+<!-- 					<tr>
 						<td id="notice_category_select" colspan="3">
 							<select id="notice_category_sel">
 								<option class="notice_category_opt">전체</option>
@@ -21,6 +21,14 @@
 								<option class="notice_category_opt" value="2">이벤트</option>
 							</select>
 						</td>
+					</tr> -->
+					<tr>
+						<c:if test="${category == 1}" >
+						<td colspan="3" class="notice_category">공지사항</td>
+						</c:if>
+						<c:if test="${category == 2}">
+						<td colspan="3" class="notice_category">이벤트</td>
+						</c:if>
 					</tr>
 					<tr id="notice_tr_txt">
 						<td id="notice_no_txt">No.</td>

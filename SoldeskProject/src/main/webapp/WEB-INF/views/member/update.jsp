@@ -37,27 +37,27 @@
 				<td>
 					<table id="update_area">
 						<tr>
-							<td class="update_txt">이름</td>
+							<td class="update_txt1">이름</td>
 							<td class="update_input1"><input name="member_name"  value ="${sessionScope.loginMember.member_name }" readonly="readonly" ></td>
 						</tr>
 						<tr>
-							<td class="update_txt">회원 ID</td>
+							<td class="update_txt1">회원 ID</td>
 							<td class="update_input1"><input name="member_id"  value ="${sessionScope.loginMember.member_id }" readonly="readonly" ></td>
 						</tr>
 						<tr>
-							<td class="update_txt">PW</td>
+							<td class="update_txt2">PW</td>
 							<td class="update_input2"><input name="member_pw"
 								placeholder="필수, 숫자 하나이상 반드시" type="password" maxlength="10"
 								autocomplete="off"></td>
 						</tr>
 						<tr>
-							<td class="update_txt">PW확인</td>
+							<td class="update_txt2">PW확인</td>
 							<td class="update_input2"><input name="member_pwChk"
 								placeholder="필수, 숫자 하나이상 반드시" type="password" maxlength="10"
 								autocomplete="off"></td>
 						</tr>
 						<tr>
-							<td class="update_txt">주소</td>
+							<td class="update_txt3">주소</td>
 							<td class="update_input3">
 								<input value="${addr[2] }" name="update_addr3" maxlength="5"
 								autocomplete="off" placeholder="우편번호" readonly="readonly" id="update_addr3Input"><br>

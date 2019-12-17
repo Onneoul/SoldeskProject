@@ -179,8 +179,9 @@
 }
 
 .notice_title:hover {
-	background-color: #0078FF;
-	color: white;
+	background-color: #3CAEFF22;
+	color: black;
+	font-weight: 600;
 	cursor: pointer;
 }
 
@@ -240,20 +241,38 @@
 
 #site_menu_notice_js {
 	position: absolute;
-	top: 147px;
-	left: 330px;
+	top: -100px;
+	left: -100px;
 	text-align: center;
 	opacity: 0;
-	
+	z-index:1;
 }
 
 .site_menu_notice_li {
 	list-style: none;
-	background-color: #6991E1;
+	background-color: #6ED746;
+	padding: 6px 1px;
+	width: 200px;
+}
+
+.site_menu_notice_li a {	
 	color: white;
-	padding: 8px 5px;
-	width: 130px;
 	font-size: 18px;
+	font-weight: bolder;
+}
+
+.site_menu_notice_li a:active {
+	
+}
+
+.site_menu_notice_li a:hover {
+	color: #006400;
+}
+
+.notice_category {
+	padding-left: 20px;
+	padding-bottom: 10px;
+	font-size: 20px;
 	font-weight: 800;
-	border-bottom: 1px solid #666666;
+	color: #6991E1;
 }

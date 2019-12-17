@@ -30,11 +30,12 @@ td {
 
 #site_head {
 	width: 100%;
-	background-color: #555555;
+	border-spacing: 0px;
+	padding-top: 10px;
 }
 
 #site_head_area {
-	width: 1000px;
+	width: 950px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -47,38 +48,48 @@ td {
 	padding-left: 650px;
 }
 
+#site_title img {
+	height: 65px;
+}
+
 #site_title td{
-	padding-left: 40px;
+	text-align: center;
 	font-size: 30px;
 	font-weight: 800;
-	background-color: #777777;
-	padding-top: 30px;
+	padding-top: 10px;
 	cursor: pointer;
 }
 
 #site_login {
 	float: right;	
-	background-color: yellow;
 }
 
 #site_login_bar {
 	padding-bottom: 2px;
+	color: #999999;
+}
+
+#site_head_menu_area {
+	width: 100%;
+	border-bottom: 3px solid #aaaaaa;
 }
 
 #site_head_menu {
-	width: 100%;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
 }
 
 #site_head_menu li {
 	float: left;
 	list-style: none;
-	background-color: #999999;
 	font-size: 22px;
 	font-weight: 700;
 	width: 22%;
 	text-align: center;
+	border-bottom: 2px solid white;
 }
-
 
 #site_content {
 	margin-left: auto;
@@ -106,4 +117,44 @@ td {
 
 .page_title_table {
 	margin-bottom: 20px;
+}
+
+#site_head_menu1:active {
+	
+}
+
+#site_head_menu1:hover {
+	font-weight: 800;
+	border-bottom: 2px solid #A8F552;
+}
+
+#site_head_menu2:active {
+	
+}
+
+#site_head_menu2:hover {
+	font-weight: 800;
+	border-bottom: 2px solid #6991E1;
+}
+
+#site_head_menu3:active {
+	
+}
+
+#site_head_menu3:hover {
+	font-weight: 800;
+	border-bottom: 2px solid #A8F552;
+}
+
+#site_head_menu4:active {
+	
+}
+
+#site_head_menu4:hover {
+	font-weight: 800;
+	border-bottom: 2px solid #A8F552;
+}
+
+#result_place {
+	position: absolute;
 }

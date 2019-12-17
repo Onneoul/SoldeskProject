@@ -207,6 +207,31 @@
 	margin-left: 15px;
 }
 
-#sns_more_btn {
+#site_menu_sns_js {
+	position: absolute;
+	top: -138px;
+	left: -547px;
+	text-align: center;
+	opacity: 0;
+	z-index:1;
+}
+
+#site_menu_sns_li {
+	list-style: none;
+	background-color: #82B3ED;
+	color: white;
+	padding: 8px 5px;
+	width: 200px;
+	font-size: 18px;
+	font-weight: 800;
+	border-bottom: 1px solid #666666;
+}
+
+#site_menu_sns_li:active {
 	
+}
+
+#site_menu_sns_li:hover {
+	color: #1E3269;
+	cursor: pointer;
 }
