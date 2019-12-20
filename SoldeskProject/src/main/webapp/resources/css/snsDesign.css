@@ -199,6 +199,7 @@
 }
 
 .SNSComment_btn {
+	font-family: "sns";
 	border: none;
 	background-color: transparent;	
 	color : #6991E1;

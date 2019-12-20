@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table class="page_title_table">
+	<table class="member_logo_table">
 		<tr>
-			<td class="page_title">로그인</td>			
+			<td id="member_logo"><img alt="" src="resources/img/loginimg.gif"></td>			
 		</tr>
 	</table>
 	<form action="member.login" method="post" name="memberLoginForm"

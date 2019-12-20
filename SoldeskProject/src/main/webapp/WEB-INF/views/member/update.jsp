@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table class="page_title_table">
+	<table class="member_logo_table">
 		<tr>
-			<td class="page_title">회원정보수정</td>			
+			<td class="member_joinlogo">회원정보 수정</td>
 		</tr>
 	</table>
 	<form action="member.update" method="post"

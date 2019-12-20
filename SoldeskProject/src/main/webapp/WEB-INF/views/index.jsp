@@ -17,17 +17,13 @@
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/check.js"></script>
 <script type="text/javascript" src="resources/js/jQuery.js"></script>
-<script type="text/javascript" src="resources/js/site_move.js"></script>
-
-<script type="text/javascript" src="resources/js/homeSlide.js"></script>
-<link rel="stylesheet" href="resources/css/homeSlide.css">
-
+<script type="text/javascript" src="resources/js/slide.js"></script>
 </head>
 <body>
-	<table id="site_head">
+	<table id="site_head" style="padding-top:10px !important">
 		<tr>
 			<td>
-				<table id="site_head_area">
+				<table id="site_head_area" style="padding-top:10px !important">
 					<tr>
 						<td id="result_place">${result }</td>
 						<td id="site_head_list" align="right"><jsp:include

@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table class="page_title_table">
+	<table class="member_logo_table">
 		<tr>
-			<td class="page_title">회원가입</td>			
+			<td class="member_joinlogo">회원가입</td>			
 		</tr>
 	</table>
 	<form action="member.join" method="post" enctype="multipart/form-data"
@@ -28,16 +28,18 @@
 				<td class="join_txt">비밀번호 입력</td>
 			</tr>
 			<tr>
-				<td class="join_input"><input name="member_pw" type="password" placeholder="영어/숫자만" maxlength="10" autocomplete="off" autofocus="autofocus"></td>
+				<td class="join_input"><input id="member_pwInput" name="member_pw" type="password" placeholder="영어/숫자만" maxlength="10" autocomplete="off" autofocus="autofocus" style="margin-bottom: 3px !important;"></td>
 			</tr>
 			<tr>
 				<td class="join_txt">비밀번호 확인</td>
 			</tr>
 			<tr>
-				<td class="join_input"><input name="member_pwChk" type="password" placeholder="비밀번호 한번 더 입력" maxlength="10" autocomplete="off" autofocus="autofocus"></td>
+				<td class="join_input"><input id="member_pwchkInput" name="member_pwChk" type="password" placeholder="비밀번호 한번 더 입력" maxlength="10" autocomplete="off" autofocus="autofocus" style="margin-bottom: 3px !important;"><br>
+					<div id="join_pwchk">비밀번호가 일치하지 않습니다.</div>
+				</td>
 			</tr>
 			<tr>
-				<td class="join_txt">이름</td>
+				<td class="join_txt" style="padding-top: 10px !important;">이름</td>
 			</tr>
 			<tr>
 				<td class="join_input"><input name="member_name" placeholder="필수" maxlength="10" autocomplete="off" autofocus="autofocus"></td>
@@ -59,7 +61,7 @@
 				<td id="join_photo_input"><input name="member_photo" type="file" style="width: 310px; height: 30px; background-color: white;"></td>
 			</tr>
 			<tr align="center">
-				<td id="join_complete_btn">
+				<td id="loginform_btn">
 					<button>가입완료</button>
 				</td>
 			</tr>

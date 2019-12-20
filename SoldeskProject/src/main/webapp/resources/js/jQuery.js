@@ -1,6 +1,7 @@
 $(function() {
 	memberAddressSearch();
 	memberIdCheck();
+	memberpwCheck();
 	updateAddressSearch();
 	noticeTitleClick();
 	imgslide();
@@ -77,21 +78,35 @@ function memberIdCheck() {
 	});
 }
 
+
+function memberpwCheck() {
+	
+	$("#member_pwchkInput").keyup(function() {		
+		var pw = $(this).closest("table").find("#member_pwInput").val();
+		var pwchk = $(this).val();
+	if (pw != pwchk) {
+		$("#join_pwchk").css("opacity", "1");
+	}	else {
+		$("#join_pwchk").css("opacity", "0");
+		}
+	});
+}
+
 function siteMenu1Mouse() {
 		var element = document.getElementById("site_head_menu1");
 		var element2 = document.getElementById("site_menu_notice_js");
 		var result = true;
 		element.onmouseenter = function() {
 			$("#site_menu_notice_js").css("opacity","1");
-			$("#site_menu_notice_js").css("top","138px");
-			$("#site_menu_notice_js").css("left","335px");
+			$("#site_menu_notice_js").css("top","156px");
+			$("#site_menu_notice_js").css("left","325px");
 			result = false;
 		}
 		element2.onmouseenter = function () {
 			if (!result) {
 				$("#site_menu_notice_js").css("opacity","1");
-				$("#site_menu_notice_js").css("top","138px");
-				$("#site_menu_notice_js").css("left","335px");
+				$("#site_menu_notice_js").css("top","156px");
+				$("#site_menu_notice_js").css("left","325px");
 				result = true;
 			} else {
 				$("#site_menu_notice_js").css("opacity","0");	
@@ -117,15 +132,15 @@ function siteMenu2Mouse() {
 	var result = true;
 	element.onmouseenter = function() {
 		$("#site_menu_sns_js").css("opacity","1");
-		$("#site_menu_sns_js").css("top","138px");
-		$("#site_menu_sns_js").css("left","547px");
+		$("#site_menu_sns_js").css("top","156px");
+		$("#site_menu_sns_js").css("left","535px");
 		result = false;
 	}
 	element2.onmouseenter = function () {
 		if (!result) {
 			$("#site_menu_sns_js").css("opacity","1");
-			$("#site_menu_sns_js").css("top","138px");
-			$("#site_menu_sns_js").css("left","547px");
+			$("#site_menu_sns_js").css("top","156px");
+			$("#site_menu_sns_js").css("left","535px");
 			result = true;
 		} else {
 			$("#site_menu_sns_js").css("opacity","0");	

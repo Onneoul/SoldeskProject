@@ -31,7 +31,7 @@ td {
 #site_head {
 	width: 100%;
 	border-spacing: 0px;
-	padding-top: 10px;
+	padding-top: 10px !important;
 }
 
 #site_head_area {

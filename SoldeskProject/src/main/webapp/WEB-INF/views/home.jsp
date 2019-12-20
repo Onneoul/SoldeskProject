@@ -10,11 +10,19 @@
 	<table id="site_main">
 		<tr>
 			<td id="site_main_img" colspan="3" align="center">
-			 <div id="slide" val="1" mx="3">
-				<li id="img1"><img src="resources/img/20160721105710571.jpg" alt=""/></li>
-				<li id="img2"><img src="resources/img/slideimg5.jpg" alt=""/></li>
-				<li id="img3"><img src="resources/img/slideimg3.jpg" alt=""/></li>
-			</div>
+					<div class="banner">
+						<ul>
+							<li><img
+								src="resources/img/slideimg1.png"
+								width="1000px" height="500px"></li>
+							<li><img
+								src="resources/img/slideimg3.jpg"
+								width="1000px" height="500px"></li>
+							<li><img
+								src="resources/img/slideimg5.jpg"
+								width="1000px" height="500px"></li>
+						</ul>
+					</div>
 			</td>
 		</tr>
 		<tr align="center">
@@ -27,9 +35,8 @@
 						<td>
 							<table>
 								<tr>
-									<td class="site_main_info_img">
-										<img src="resources/img/Penguins.jpg"></img>
-									</td>
+									<td class="site_main_info_img"><img
+										src="resources/img/Penguins.jpg"></img></td>
 								</tr>
 								<tr>
 									<td>제목입력</td>
@@ -72,17 +79,17 @@
 			<td>
 				<table id="site_main_review_table">
 					<tr>
-						<td class="site_main_info_title">
-							<img src="resources/img/notice.gif"></img>
-							<a id="site_main_review_more" href="notice.view">+더보기</a>
-						</td>
+						<td class="site_main_info_title"><img
+							src="resources/img/notice.gif"></img> <a
+							id="site_main_review_more" href="notice.view">+더보기</a></td>
 					</tr>
 					<!-- 몇개정도 보일지? -->
-					<c:forEach var="n" items="${notices }" >
-					<tr>
-						<td class="site_main_review_title"><a onclick="goNoticeContent(${n.notice_number});">${n.notice_title }</a></td>
-						<td class="site_main_review_id">${n.notice_id }</td>
-					</tr>
+					<c:forEach var="n" items="${notices }">
+						<tr>
+							<td class="site_main_review_title"><a
+								onclick="goNoticeContent(${n.notice_number});">${n.notice_title }</a></td>
+							<td class="site_main_review_id">${n.notice_id }</td>
+						</tr>
 					</c:forEach>
 				</table>
 			</td>
