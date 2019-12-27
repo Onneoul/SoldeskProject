@@ -1,33 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.soldesk.spring.info.person.PersonMapper">
+	<insert id="personWrite" parameterType="com.soldesk.spring.info.person.Person">
+		insert into person values(person_seq.nextval, #{person_name}, #{person_birth}, #{person_birthplace}, #{person_photo }, #{code})
+	</insert>
+
+	<insert id="insertCasting" parameterType="com.soldesk.spring.info.person.Casting">
+		insert into casting values(#{theater_number}, #{person_number})
+	</insert>
+
+	<delete id="deleteCasting" parameterType="com.soldesk.spring.info.person.Casting">
+		delete 
+		from casting 
+		where theater_number = #{theater_number } 
+		and person_number = #{person_number }
+	</delete>
+
+	<select id="personCount" resultType="java.lang.Integer"
+							parameterType="com.soldesk.spring.notice.NoticeSelector">
+		select count(*) from person where notice_text like '%'||#{search}||'%'
+	</select>
+
 	<select id="getPersonInfo" parameterType="com.soldesk.spring.info.person.Person" resultType="com.soldesk.spring.info.person.Person">
-		select person_number, person_name, person_birth
-			from person where person_number = #{person_number}
+		select *
+		from person where person_number = #{person_number}
 	</select>
 
 	<select id="getTheaterDetailPerson" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.theater.TheaterInfo">
 		select theater_number, person_number, person_name, code, code_comment
-			from (select * from theater_info, person, code, casting 
-					where theater_info.theater_number = casting.theater_number
-					and person.person_name = casting.person.name
-				) where  theater_number = #{theater_number}
+		from (select * from theater_info, person, code, casting 
+				where theater_info.theater_number = casting.theater_number
+				and person.person_name = casting.person.name
+		) where  theater_number = #{theater_number}
 	</select>
 	
-	<select id="getPersonTheater" parameterType="com.soldesk.spring.info.person.Person" resultType="com.soldesk.spring.info.person.Person">
-		select theater_number, theater_title, theater_photo
-			from (select * from theater_info, person, code, casting
-					where theater_info.theater_number = casting.theater_number
-					and person.person_name = casting.person.name
-				) where person_number = #{person_number}
+	<select id="getPersonCast" parameterType="com.soldesk.spring.info.person.Person" resultType="com.soldesk.spring.info.theater.TheaterInfo">
+		select theater_number, theater_title, theater_photo, person_number, person_name
+		from (select t.theater_number, t.theater_title, p.person_number, p.person_name, theater_photo
+				from theater_info t, person p, casting c
+					where t.theater_number = c.theater_number
+					and p.person_number = c.person_number
+				group by t.theater_number, t.theater_title, p.person_number, p.person_name, theater_photo
+		) where person_number = #{person_number}
 	</select>
+	
+	<select id="searchPerson" parameterType="com.soldesk.spring.info.theater.TheaterSelector" resultType="com.soldesk.spring.info.person.Person">
+		select * 
+		from 
+			(select rownum as rn, person_name, person_birth, person_birthplace, person_number
+			from 
+				(select * 
+				from person
+				where person_name like '%'||#{search}||'%' order by person_name
+				)
+			)
+		where rn &gt;= #{start} and rn &lt;= #{end}					
+	</select>
+	
+	<select id="getPersonCastDetail" parameterType="com.soldesk.spring.info.person.Person" resultType="com.soldesk.spring.info.theater.TheaterInfo">
+		
+	</select>
+	
 	<select id="getTheaterPerson" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.person.Person">
-		select tn, code, person_number, person_name
-			from (
-				select theater_number as tn, code, person_number, person_name
-					from 
-						(select t.theater_number, p.person_number, c.code, person_name from theater_info t, person p, code c, (select * from casting) g)
-				) where tn = #{theater_number}
+		select theater_number, code, person_number, person_name
+		from (select t.theater_number, p.person_number, p.code, person_name
+				from theater_info t, person p, code c, casting g
+				where g.theater_number = t.theater_number
+				and g.person_number = p.person_number
+				group by t.theater_number, p.person_number, p.code, person_name
+		) where theater_number = #{theater_number}
 	</select>
+	
+	<select id="getPersonByOrganization" parameterType="com.soldesk.spring.info.organization.Organization" resultType="com.soldesk.spring.info.person.Person">
+		select person_name, person_number
+		from
+			(select person_name, p.person_number, o.group_number
+			from person p, organization o, person_organization e
+			where p.person_number = e.person_number
+			and o.group_number = e.group_number
+			)
+		where group_number = #{group_number}
+	</select>
+
 	
 </mapper>

@@ -35,9 +35,9 @@
 		<beans:property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
-			value="jdbc:oracle:thin:@172.16.3.27:1521:xe" />
-		<beans:property name="username" value="kimkim" />
-		<beans:property name="password" value="kimkim" />
+			value="jdbc:oracle:thin:@xe.cvzs4dcfvkeu.ap-northeast-2.rds.amazonaws.com:1521:ORCL" />
+		<beans:property name="username" value="kimminse" />
+		<beans:property name="password" value="12345678" />
 	</beans:bean>
 
 	<beans:bean id="transactionManager"
@@ -57,6 +57,7 @@
 				<beans:value>classpath:NoticeMapper.xml</beans:value>
 				<beans:value>classpath:SNSMapper.xml</beans:value>
 				<beans:value>classpath:PersonMapper.xml</beans:value>
+				<beans:value>classpath:DateTimeMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

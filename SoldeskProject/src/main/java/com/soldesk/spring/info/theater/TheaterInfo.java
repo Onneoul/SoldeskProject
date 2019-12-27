@@ -1,6 +1,7 @@
 package com.soldesk.spring.info.theater;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import com.soldesk.spring.info.code.Code;
@@ -18,24 +19,24 @@ public class TheaterInfo {
 	private BigDecimal theater_age;
 	private String theater_photo;
 	
-	private String start_date;
-	private String end_date;
+	private Date_time start_date;
+	private Date_time end_date;
 	
 	private List<Genre> theater_genre;
-	private List<Stage> theater_stage;
+	private Stage theater_stage;
 	private List<Person> theater_person;
 	private List<Code> theater_code;
 	private List<Date_time> theater_date_time;
-	private List<Organization> theater_Organization;
+	private Organization theater_organization;
 	
 	public TheaterInfo() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public TheaterInfo(BigDecimal theater_number, String theater_title, BigDecimal theater_time, BigDecimal theater_age,
-			String theater_photo, String start_date, String end_date, List<Genre> theater_genre,
-			List<Stage> theater_stage, List<Person> theater_person, List<Code> theater_code,
-			List<Date_time> theater_date_time, List<Organization> theater_Organization) {
+			String theater_photo, Date_time start_date, Date_time end_date, List<Genre> theater_genre,
+			Stage theater_stage, List<Person> theater_person, List<Code> theater_code,
+			List<Date_time> theater_date_time, Organization theater_organization) {
 		super();
 		this.theater_number = theater_number;
 		this.theater_title = theater_title;
@@ -49,7 +50,7 @@ public class TheaterInfo {
 		this.theater_person = theater_person;
 		this.theater_code = theater_code;
 		this.theater_date_time = theater_date_time;
-		this.theater_Organization = theater_Organization;
+		this.theater_organization = theater_organization;
 	}
 
 	public BigDecimal getTheater_number() {
@@ -92,19 +93,19 @@ public class TheaterInfo {
 		this.theater_photo = theater_photo;
 	}
 
-	public String getStart_date() {
+	public Date_time getStart_date() {
 		return start_date;
 	}
 
-	public void setStart_date(String start_date) {
+	public void setStart_date(Date_time start_date) {
 		this.start_date = start_date;
 	}
 
-	public String getEnd_date() {
+	public Date_time getEnd_date() {
 		return end_date;
 	}
 
-	public void setEnd_date(String end_date) {
+	public void setEnd_date(Date_time end_date) {
 		this.end_date = end_date;
 	}
 
@@ -116,11 +117,11 @@ public class TheaterInfo {
 		this.theater_genre = theater_genre;
 	}
 
-	public List<Stage> getTheater_stage() {
+	public Stage getTheater_stage() {
 		return theater_stage;
 	}
 
-	public void setTheater_stage(List<Stage> theater_stage) {
+	public void setTheater_stage(Stage theater_stage) {
 		this.theater_stage = theater_stage;
 	}
 
@@ -148,14 +149,12 @@ public class TheaterInfo {
 		this.theater_date_time = theater_date_time;
 	}
 
-	public List<Organization> getTheater_Organization() {
-		return theater_Organization;
+	public Organization getTheater_organization() {
+		return theater_organization;
 	}
 
-	public void setTheater_Organization(List<Organization> theater_Organization) {
-		this.theater_Organization = theater_Organization;
+	public void setTheater_organization(Organization theater_organization) {
+		this.theater_organization = theater_organization;
 	}
-
 	
-
 }

@@ -2,6 +2,9 @@ package com.soldesk.spring.info.stage;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+
+import com.soldesk.spring.info.theater.TheaterInfo;
 
 public class Stage {
 	private BigDecimal stage_number;
@@ -10,17 +13,21 @@ public class Stage {
 	private Date stage_date;
 	private String stage_photo;
 	
+	private List<TheaterInfo> stage_theater;
+	
 	public Stage() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Stage(BigDecimal stage_number, String stage_name, String stage_place, Date stage_date, String stage_photo) {
+	public Stage(BigDecimal stage_number, String stage_name, String stage_place, Date stage_date, String stage_photo,
+			List<TheaterInfo> stage_theater) {
 		super();
 		this.stage_number = stage_number;
 		this.stage_name = stage_name;
 		this.stage_place = stage_place;
 		this.stage_date = stage_date;
 		this.stage_photo = stage_photo;
+		this.stage_theater = stage_theater;
 	}
 
 	public BigDecimal getStage_number() {
@@ -61,6 +68,14 @@ public class Stage {
 
 	public void setStage_photo(String stage_photo) {
 		this.stage_photo = stage_photo;
+	}
+
+	public List<TheaterInfo> getStage_theater() {
+		return stage_theater;
+	}
+
+	public void setStage_theater(List<TheaterInfo> stage_theater) {
+		this.stage_theater = stage_theater;
 	}
 	
 }

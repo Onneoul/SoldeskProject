@@ -5,42 +5,140 @@
 							parameterType="com.soldesk.spring.info.theater.TheaterSelector">
 		select count(*) from theater_info where theater_title = '%'||#{search}||'%'
 	</select>
+	<select id="genreCount" resultType="java.lang.Integer"
+							parameterType="com.soldesk.spring.info.theater.TheaterSelector">
+		select count(*) from genre where genre_name = '%'||#{search}||'%'
+	</select>
+	
+	<insert id="insertGenre" parameterType="com.soldesk.spring.info.genre.TheaterGenre">
+		insert into theater_genre values(#{theater_number}, #{genre_number})
+	</insert>
 	
 	<insert id="theaterWrite" parameterType="com.soldesk.spring.info.theater.TheaterInfo">
-		insert into theater_info values(theater_info_seq.nextval, #{theater_title}, #{theater_photo}, #{theater_time}, #{theater_age})
+		insert into theater_info values
+		(theater_info_seq.nextval, #{theater_title}, #{theater_photo}, #{theater_time}, #{theater_age})
 	</insert>
+	
+	<update id="theaterUpdate" parameterType="com.soldesk.spring.info.theater.TheaterInfo">
+		update theater_info
+		set theater_photo = #{theater_photo}, theater_title = #{theater_title}, theater_time = #{theater_time}, theater_age = #{theater_age}
+		where theater_number = #{theater_number}
+	</update>
+	
+	<delete id="theaterDelete" parameterType="com.soldesk.spring.info.theater.TheaterInfo">
+		delete 
+		from theater_info
+		where theater_number = #{theater_number}
+	</delete>
 	
 	<select id="getTheater" parameterType="com.soldesk.spring.info.theater.TheaterSelector" 
 							resultType="com.soldesk.spring.info.theater.TheaterInfo">
 							
 		select * 
+		from 
+			(select rownum as rn, theater_photo, theater_title, theater_time, theater_age, theater_number 
 			from 
-				(select rownum as rn, theater_photo, theater_title, theater_time, theater_age, theater_number 
-					from 
-						(select * 
-							from theater_info
-								where theater_title like '%'||#{search}||'%' order by theater_number desc
-						)
-				) where rn &gt;= #{start} and rn &lt;= #{end}					
+				(select * 
+				from theater_info
+				where theater_title like '%'||#{search}||'%' order by theater_number desc
+				)
+			)
+		where rn &gt;= #{start} and rn &lt;= #{end}					
 	</select>
 	
 	<select id="getTheaterGenre" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.genre.Genre">
+		select genre_number, genre_name
+		from
+			(select g.genre_number, genre_name, t.theater_number 
+			from theater_info t, genre g, theater_genre e
+			where t.theater_number = e.theater_number
+			and g.genre_number = e.genre_number
+			)
+		where theater_number = #{theater_number}
+	</select>
 	
+	<select id="getTheaterByGenre" parameterType="com.soldesk.spring.info.genre.Genre" resultType="com.soldesk.spring.info.theater.TheaterInfo">
+		select theater_title, theater_photo, theater_time, theater_age, theater_number
+		from
+			(select t.theater_number, theater_title, theater_photo, theater_time, theater_age, g.genre_number
+			from theater_info t, genre g, theater_genre e
+			where t.theater_number = e.theater_number
+			and g.genre_number = e.genre_number
+			)
+		where genre_number = #{genre_number}
+	</select>
+	
+	<select id="getGenreByNumber" parameterType="com.soldesk.spring.info.genre.Genre" resultType="com.soldesk.spring.info.genre.Genre">
+		select genre_number, genre_name
+		from genre
+		where genre_number = #{genre_number}
+	</select>
+	
+	<select id="getOrganizationByNumber" parameterType="com.soldesk.spring.info.organization.Organization" resultType="com.soldesk.spring.info.organization.Organization">
+		select group_number, group_name
+		from organization
+		where group_number = #{group_number}
+	</select>
+	
+	<select id="getTheaterByOrganization" parameterType="com.soldesk.spring.info.organization.Organization" resultType="com.soldesk.spring.info.theater.TheaterInfo">
+		select theater_title, theater_photo, theater_time, theater_age, theater_number
+		from
+			(select t.theater_number, theater_title, theater_photo, theater_time, theater_age, o.group_number
+			from theater_info t, organization o, theater_organization e
+			where t.theater_number = e.theater_number
+			and o.group_number = e.group_number
+			)
+		where group_number = #{group_number}
 	</select>
 	
 	<select id="getTheaterOrganization" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.organization.Organization">
-	
+		select group_number, group_name, theater_number
+		from
+			(select o.group_number, group_name, t.theater_number 
+			from theater_info t, organization o, theater_organization e
+			where t.theater_number = e.theater_number
+			and o.group_number = e.group_number
+			)
+		where theater_number = #{theater_number}
 	</select>
 	
 	<select id="getTheaterStage" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.stage.Stage">
+		select stage_number, stage_name
+		from
+			(select s.stage_number, stage_name, t.theater_number 
+			from theater_info t, stage s, theater_stage e
+			where t.theater_number = e.theater_number
+			and s.stage_number = e.stage_number
+			)
+		where theater_number = #{theater_number}
+	</select>
 	
+	<select id="getStageByNumber" parameterType="com.soldesk.spring.info.stage.Stage" resultType="com.soldesk.spring.info.stage.Stage">
+		select *
+		from stage
+		where stage_number = #{stage_number}
+	</select>
+	
+	<select id="getTheaterByStage" parameterType="com.soldesk.spring.info.stage.Stage" resultType="com.soldesk.spring.info.theater.TheaterInfo">
+		select theater_number, theater_title, theater_photo, theater_time, theater_age
+		from (
+			select t.theater_number, theater_title, theater_photo, theater_time, theater_age, s.stage_number
+			from theater_info t, stage s, theater_stage e
+			where t.theater_number = e.theater_number
+			and s.stage_number = e.stage_number
+		) where stage_number = #{stage_number}
 	</select>
 	
 	<select id="getTheaterDateTime" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.date_time.Date_time">
-		select dt.theater_date, dt.date_number
-			from
-				(select * from theater_info, dateTime dt, theater_dateTime)
-					where theater_number = #{theater_number}
+		select theater_date, date_number
+		from
+			(select t.theater_number, d.date_number, d.theater_date
+			from theater_info t, date_time d, theater_date_Time e
+			where t.theater_number = e.theater_number
+			and d.date_number = e.date_number
+			)
+		where theater_number = #{theater_number}
+		
 	</select>
 	
 	<select id="getTheaterDetail" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.theater.TheaterInfo"> 
@@ -48,10 +146,33 @@
 			from theater_info where theater_number = #{theater_number}
 	</select>
 	
+	<select id="getTheaterByPerson" parameterType="com.soldesk.spring.info.person.Person" resultType="com.soldesk.spring.info.theater.TheaterInfo"> 
+		select theater_number, theater_title, person_number
+			from (select t.theater_number, t.theater_title, p.person_number, p.person_name
+					from theater_info t, person p, casting c
+						where t.theater_number = c.theater_number
+						and p.person_number = c.person_number
+					group by t.theater_number, t.theater_title, p.person_number, p.person_name
+		) where person_number = #{person_number}
+	</select>
 	
+	<select id="getTheaterByPhoto" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.theater.TheaterInfo">
+		select theater_number 
+		from theater_info 
+		where theater_photo = #{theater_photo}
+	</select>
 	
-	
-	
-
-	
+	<select id="getGenre" parameterType="com.soldesk.spring.info.theater.TheaterSelector" resultType="com.soldesk.spring.info.genre.Genre">
+		select * 
+		from 
+			(select rownum as rn, genre_name, genre_number
+			from 
+				(select * 
+				from genre
+				where genre_name like '%'||#{search}||'%' order by genre_name
+				)
+			)
+		where rn &gt;= #{start} and rn &lt;= #{end}		
+		
+	</select>
 </mapper>

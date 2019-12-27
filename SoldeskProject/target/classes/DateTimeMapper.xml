@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soldesk.spring.info.date_time.DateTimeMapper">
+	<insert id="insertDate" parameterType="com.soldesk.spring.info.date_time.Date_time">
+		insert into date_time values(date_seq, #{theater_date })
+	</insert>
+	
+	<insert id="insertTheaterDate" parameterType="com.soldesk.spring.info.date_time.Theater_date_time">
+		insert into theater_date_time values(#{theater_number} #{date_number})
+	</insert>
+	
+	<select id="getTheaterDateTime" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.date_time.Date_time">
+		
+		select theater_number, theater_title, date_number, theater_date
+		from (
+			select t.theater_number, t.theater_title, d.date_number, d.theater_date
+				from theater_info t, date_time d, theater_date_time e
+				where e.theater_number = t.theater_number 
+				and d.date_number = e.date_number
+				group by t.theater_number, t.theater_title, d.date_number, d.theater_date
+				order by d.theater_date
+		) where theater_number = #{theater_number}
+		
+	</select>
+	
+	<select id="getTheaterStartDate" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.date_time.Date_time">
+		
+		select * 
+		from (
+				select rownum as rn, theater_number, theater_title, date_number, theater_date, (min(rownum)) as rmin
+				from (
+					select t.theater_number, t.theater_title, d.date_number, d.theater_date
+						from theater_info t, date_time d, theater_date_time e
+						where e.theater_number = t.theater_number 
+						and d.date_number = e.date_number
+						group by t.theater_number, t.theater_title, d.date_number, d.theater_date
+						order by d.theater_date
+				) where theater_number = #{theater_number}
+				group by rownum, theater_number, theater_title, date_number, theater_date
+			) where rownum = rmin
+		
+	</select>
+	
+	<select id="getTheaterEndDate" parameterType="com.soldesk.spring.info.theater.TheaterInfo" resultType="com.soldesk.spring.info.date_time.Date_time">
+		
+		select * 
+		from (
+				select rownum as rn, theater_number, theater_title, date_number, theater_date, (max(rownum)) as rmax
+				from (
+					select t.theater_number, t.theater_title, d.date_number, d.theater_date
+						from theater_info t, date_time d, theater_date_time e
+						where e.theater_number = t.theater_number 
+						and d.date_number = e.date_number
+						group by t.theater_number, t.theater_title, d.date_number, d.theater_date
+						order by d.theater_date desc
+				) where theater_number = #{theater_number}
+				group by rownum, theater_number, theater_title, date_number, theater_date
+			) where rownum = rmax
+		
+	</select>
+	
+</mapper>

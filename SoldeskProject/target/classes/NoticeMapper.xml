@@ -9,11 +9,11 @@
 		select *
 		from (
 		select rownum as rn, notice_number,
-		notice_title, notice_text, notice_id
+		notice_title, notice_text, member_id
 		from (
-		select *
-		from notice, Member
-		where notice_id = member_id and notice_title like '%'||#{search}||'%'
+		select notice_number, notice_title, notice_text, n.member_id
+		from notice n, Member m
+		where n.member_id = m.member_id and n.notice_title like '%'||#{search}||'%'
 		order by notice_number desc
 		)
 		)
@@ -26,7 +26,7 @@
 		parameterType="com.soldesk.spring.notice.Notice">
 		insert into notice
 		values(notice_seq.nextval,
-		#{notice_title}, #{notice_text}, #{notice_id}, #{notice_category})
+		#{notice_title}, #{notice_text}, #{member_id}, #{notice_category})
 	</insert>
 
 	<!-- Notice제목 클릭시 내용이동 -->
@@ -53,11 +53,11 @@
 		select *
 		from (
 		select rownum as rn, notice_number,
-		notice_title, notice_text, notice_category, notice_id
+		notice_title, notice_text, notice_category, member_id
 		from (
-		select *
+		select notice_number, notice_title, notice_text, n.member_id
 		from notice, Member
-		where notice_id = member_id and notice_category = #{notice_category}
+		where n.member_id = m.member_id and notice_category = #{notice_category}
 		order by notice_number desc
 		)
 		)
